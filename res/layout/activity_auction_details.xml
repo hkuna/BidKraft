@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFF"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            android:textStyle="bold" 
+            android:text="User Name : Momma1222"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:padding="5dp"
+            android:textStyle="bold" 
+                android:textSize="15sp"
+            android:text="Description : 
+I need a baby sitter from 4-9pm on saturday, May5th . Your responsibilities can include :
+-Diapers
+-Cooking
+Blah Blah" />
+
+        <TextView
+            android:id="@+id/timeleft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+                android:textSize="15sp"
+            android:text="Time Left: 1hr 32 45s"
+            android:textStyle="bold" 
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/offers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="OFFERS:"
+                android:textSize="15sp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
+
+        
+
+            <ListView
+                android:id="@android:id/list"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:padding="10dp" >
+            </ListView>
+       
+
+        <Button
+            android:id="@+id/placecancl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+          
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Cancel" >
+        </Button>
+    </LinearLayout>
+

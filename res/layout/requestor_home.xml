@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:orientation="vertical"
+	 android:layout_width="match_parent"
+     android:layout_height="match_parent"	
+      >
+ <android.support.v4.view.ViewPager 
+    android:id="@+id/pager"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true" />
+ 
+ 
+  <RelativeLayout 
+        android:id="@+id/rl_bottomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
+ <LinearLayout 
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     android:orientation="horizontal"
+     android:weightSum="2"
+     android:background="#F39C12"
+     >
+    <ImageView
+        android:id="@+id/ib_createpost" 
+            android:text="create"
+         android:background="@null"
+            android:layout_alignParentLeft="true" 
+            android:layout_alignParentStart="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+             android:src="@drawable/createpost"
+            >
+        </ImageView>
+
+        <ImageView 
+              android:background="@null"
+            android:text="settings"
+            android:id="@+id/ib_settings" 
+             android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"
+            android:src="@drawable/settings"
+            android:layout_gravity="center_horizontal|center_vertical">
+        </ImageView>
+        
+ </LinearLayout>
+    </RelativeLayout>
+
+ 
+ 
+ </RelativeLayout>    

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id = "@+id/rlview"
+    >
+    
+     
+    
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="2"
+    android:orientation="vertical"
+    >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FFF" />
+
+           <View
+               android:layout_width="match_parent"
+               android:layout_height="0dp"
+               android:layout_weight="1"
+               android:background="#F39C12" />
+           
+           </LinearLayout>
+           
+      <ImageView
+          android:id="@+id/iv_title"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentTop="true"
+          android:layout_alignTop="@+id/iv_loginlogo"
+          android:layout_centerHorizontal="true"
+          android:layout_centerInParent="true"
+          android:layout_marginTop="30dp"
+          android:adjustViewBounds="true"
+          android:contentDescription="App titile"
+          android:scaleType="centerInside"
+          android:src="@drawable/bidkrafttitle" />
+           
+           <ImageView
+               android:id="@+id/iv_loginlogo"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:adjustViewBounds="true"
+               android:contentDescription="login Logo"
+               android:scaleType="centerInside"
+               android:src="@drawable/login_logo" />
+           
+           <EditText
+               android:id="@+id/et_username"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/iv_loginlogo"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+              
+               android:background="#d98704"
+               android:hint="UserName"
+               android:paddingLeft="5dp"
+               android:textColor="#ECF0F1"
+               android:textSize="20sp" 
+                android:text="rohit"/>
+           
+          <EditText
+              android:id="@+id/et_password"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/et_username"
+              android:layout_centerHorizontal="true"
+              android:layout_centerVertical="true"
+        
+             
+              android:background="#d98704"
+              android:hint="Password"
+              android:paddingLeft="5dp"
+              android:textColor="#ECF0F1"
+              android:textSize="20sp"
+              android:inputType="textPassword" 
+              android:text="rohit123" />
+          
+          <Button
+              android:id="@+id/btn_login"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/et_password"
+              android:layout_marginTop="10dp"
+              android:background="@null"
+              android:text="Login"
+              android:textColor="#FFF"
+              android:textStyle="bold" />
+          
+          <View
+              android:id="@+id/v_ht"
+              android:layout_width="3dp"
+              android:layout_height="30dp"
+              android:layout_below="@+id/et_password"
+            android:layout_marginTop="10dp"
+              android:layout_toRightOf="@+id/btn_login"
+              android:layout_toEndOf="@+id/btn_login"
+              android:background="#FFF" >
+              
+          </View>
+              
+          <Button
+              android:id="@+id/btn_signup"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/et_password"
+              android:layout_marginTop="10dp"
+              android:layout_toRightOf="@+id/v_ht"
+              android:background="@null"
+              android:text="SignUp"
+              android:textColor="#FFF"
+              android:textStyle="bold" />
+          
+           <Button
+               android:id="@+id/btn_f_password"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/v_ht"
+               android:layout_marginTop="10dp"
+              
+               android:background="@null"
+               android:text="ForgotPassword ?"
+               android:textColor="#FFF" />
+           
+</RelativeLayout>
+
+

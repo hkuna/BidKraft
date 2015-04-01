@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content">
+  <!-- <TextView
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content" 
+  android:text="10"
+  android:textColor="#FFF"
+  android:textSize="16sp"
+  android:textStyle="bold"
+  android:background="@drawable/badge"/> -->
+  
+
+  <ImageView
+    android:id="@+id/tabicon_create"
+    android:layout_width="35dp"
+    android:layout_height="35dp"
+    android:src="@drawable/createrequest"
+    android:layout_centerVertical="true"
+    android:layout_centerHorizontal="true"/>     
+  <!-- <TextView
+    android:id="@+id/textOne"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+android:layout_alignTop="@id/tabicon_create"
+    android:layout_alignRight="@id/tabicon_create"
+    android:paddingLeft="15dp"
+    android:text="5"
+    android:textColor="#FF0000"
+    android:textSize="15sp"
+    android:textStyle="bold"
+    /> -->
+    <!-- android:background="@drawable/badge" -->
+
+  </RelativeLayout>

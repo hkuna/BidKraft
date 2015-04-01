@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="#BDC3C7"
+  
+    >
+    
+    <ScrollView
+        android:id="@+id/sv"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+         >
+<RelativeLayout
+            android:layout_width= "match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rl_top"
+            >
+            
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DAte : 2/3/15" >
+            </TextView>
+            
+            <TextView
+                android:id="@+id/tv_username"
+                 android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" 
+                android:text=" username "
+                >
+            </TextView>
+            
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_username"
+                android:text ="The description of the request and extra extra goes here" 
+                android:inputType="textMultiLine"
+                
+                />
+           
+            
+            		
+            
+        </RelativeLayout>
+        
+        </ScrollView>
+
+    
+    
+                <ListView
+                android:id="@+id/lv_bidHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ECF0F1"
+                android:layout_below="@+id/sv" >
+
+            </ListView>
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        
+        android:id="@+id/rl_anchorView"
+        android:background="#ECF0F1"
+        android:layout_marginTop="2dp"
+        android:layout_below="@+id/lv_bidHistory"
+     
+        >
+           <EditText
+               android:id="@+id/et_bidAmount"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_above="@+id/tv_timeleft"
+               android:layout_alignParentLeft="true"
+               android:layout_alignParentStart="true"
+               android:background="@drawable/custom_theme_textfield_activated_holo_light"
+               android:hint="$0" />
+           
+           <Button
+               android:id="@+id/btn_bid"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_above="@+id/tv_lowestbid"
+               android:layout_alignParentEnd="true"
+               android:layout_alignParentRight="true"
+               android:layout_toEndOf="@+id/et_bidAmount"
+               android:layout_toRightOf="@+id/et_bidAmount"
+               android:background="#F39C12"
+               android:text="Bid"
+               android:textColor="#fff"
+               android:textStyle="bold" />
+    
+   <TextView  
+       android:id="@+id/tv_timeleft"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content" 
+        android:layout_alignParentBottom="true"
+        android:background="#E74C3C"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="5:32 PM \n Time Left"
+        android:gravity="center"
+        android:textColor="#ECF0F1"
+        
+     />
+   
+   <TextView 
+   
+       android:id = "@+id/tv_lowestbid"
+       android:layout_height="wrap_content"
+        android:layout_width="wrap_content" 
+            android:layout_toRightOf="@+id/tv_timeleft"
+       android:layout_toEndOf="@+id/tv_timeleft"
+       android:layout_alignParentBottom="true"
+       android:layout_alignParentRight="true"
+       android:layout_alignParentEnd="true"
+       android:text="$7.75/hr \n Lowest Bid"
+        android:gravity="center"
+        android:textColor="#ECF0F1"
+        android:background="#2ECC71"   
+       />
+
+</RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,41 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${packageName}.${activityClass}" 
+    android:padding="5dp"
+    android:orientation="vertical">
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+      
+        android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Radius " 
+        android:textStyle ="bold"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Set Radius " 
+        android:gravity="center"
+        android:id ="@+id/et_vendorRadius"
+   
+        />
+    </LinearLayout>
+    
+    <Button 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:gravity="center"
+        android:padding="25dp"
+        android:id="@+id/btn_vendorPreferencesSubmit"
+
+        >
+        
+    </Button>
+
+</LinearLayout>

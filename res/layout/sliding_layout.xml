@@ -1,0 +1,615 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+<!--     <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Drag the control at the bottom"
+        android:textSize="20dp"
+        tools:context=".SlidingDrawerActivity" /> -->
+        
+<LinearLayout 
+    android:background="#E0e0e0"
+        android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+       
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        tools:context=".SlidingDrawerActivity" >
+
+    </ListView>
+    
+    <LinearLayout 
+        android:id="@+id/tabbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+     <Button
+            android:id="@+id/profile"
+             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Profile"
+            android:background="#ffffff" >
+        </Button>
+    
+      <Button
+            android:id="@+id/newpost"
+             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="newpost" 
+           
+            android:visibility="invisible"
+             android:background="@null"
+             android:layout_weight="1">
+        </Button>
+     
+       <Button
+            android:id="@+id/settings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="settings"
+             android:layout_weight="1"
+            android:background="#ffffff" >
+        </Button>
+      </LinearLayout>
+</LinearLayout>
+    <SlidingDrawer
+        android:id="@+id/SlidingDrawer"
+         
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_alignParentBottom="true"
+        android:content="@+id/contentLayout"
+        android:handle="@+id/slideButton"
+        android:orientation="vertical"
+        >
+<LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/slideButton2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Create Post"
+            android:background="#ffffff"
+           
+           >      </Button>
+       <Button
+            android:id="@+id/slideButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CreatePost"
+            android:background="#ffffff"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+           
+           >      </Button>
+           <Button
+            android:id="@+id/slideButton3"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+       
+            android:layout_height="wrap_content"
+            android:text="Newpost"
+           android:background="#ffffff"
+           
+           >
+            
+            
+
+        </Button>
+
+        
+        
+        
+
+    
+</LinearLayout>
+        <LinearLayout
+            android:id="@+id/contentLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+             >
+<LinearLayout android:layout_height="2dp"
+    android:layout_width="match_parent"
+    android:background="#e0e0e0">
+    </LinearLayout>
+
+            <android.support.v4.view.ViewPager
+                android:background="#ffff"
+                android:id="@+id/vpPager"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+            </android.support.v4.view.ViewPager>
+            
+        </LinearLayout>
+    </SlidingDrawer>
+    
+</RelativeLayout>
+    
+
+<!-- <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Drag the control at the bottom"
+        android:textSize="20dp"
+        tools:context=".SlidingDrawerActivity" />
+        
+<LinearLayout 
+        android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        tools:context=".SlidingDrawerActivity" >
+
+    </ListView>
+    
+    <LinearLayout 
+        android:id="@+id/tabbar"
+        android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+     <Button
+            android:id="@+id/profile"
+             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Profile" >
+        </Button>
+    
+      <Button
+            android:id="@+id/newpost"
+             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="newpost" 
+            android:visibility="invisible"
+             android:background="@null"
+             android:layout_weight="1">
+        </Button>
+     
+       <Button
+            android:id="@+id/settings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="settings"
+             android:layout_weight="1" >
+        </Button>
+      </LinearLayout>
+</LinearLayout>
+    <SlidingDrawer
+        android:id="@+id/SlidingDrawer"
+          
+        android:layout_width="match_parent"
+        android:layout_height="150dip"
+        android:layout_alignParentBottom="true"
+        android:content="@+id/contentLayout"
+        android:handle="@+id/slideButton"
+        android:orientation="vertical"
+        >
+<LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/settings"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Newpost"
+           
+           >      </Button>
+       <Button
+            android:id="@+id/profile"
+           android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Newpost"
+           
+           >      </Button>
+       
+       
+           <Button
+            android:id="@+id/newpost"
+            
+         android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Newpost"
+           
+           >        </Button>
+        
+           
+
+        
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/contentLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dip" >
+           
+           
+  
+            <android.support.v4.view.ViewPager
+                android:background="#fff"
+                android:id="@+id/vpPager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+            </android.support.v4.view.ViewPager>
+            
+        </LinearLayout>
+    </SlidingDrawer>
+    
+</RelativeLayout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <ListView
+              android:id="@android:id/list"
+              android:layout_width="wrap_content"
+              android:layout_height="460dp" >
+
+            </ListView>
+
+    <SlidingDrawer
+        android:id="@+id/SlidingDrawer"
+        android:layout_width="wrap_content"
+        android:layout_height="250dip"
+        android:layout_alignParentBottom="true"
+        android:content="@+id/contentLayout"
+        android:handle="@+id/slideButton"
+        android:orientation="vertical"
+        android:padding="10dip" >
+
+        
+         <Button
+            android:id="@+id/profile"
+             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Profile" >
+        </Button>
+    
+      <Button
+            android:id="@+id/slideButton"
+            android:layout_width="wrap_content"
+           
+            android:layout_height="wrap_content"
+            android:text="Create Post" >
+        </Button>
+     
+       <Button
+            android:id="@+id/settings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="settings"
+             android:layout_weight="1" >
+        </Button>
+
+        <LinearLayout
+            android:id="@+id/contentLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dip" >
+
+            <Button
+                android:id="@+id/Button01"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:text="Button 1" >
+            </Button>
+
+            <Button
+                android:id="@+id/Button02"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:text="Button 2" >
+            </Button>
+
+            <Button
+                android:id="@+id/Button03"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:text="Button 3" >
+            </Button>
+        </LinearLayout>
+    </SlidingDrawer>
+
+</RelativeLayout>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Drag the control at the bottom"
+        android:textSize="20dp"
+        tools:context=".SlidingDrawerActivity" />
+ 
+
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:paddingTop="?android:attr/actionBarSize">
+
+          <ListView
+              android:id="@android:id/list"
+              android:layout_width="wrap_content"
+              android:layout_height="460dp" >
+
+            </ListView>
+          
+
+            <TextView
+                android:id="@+id/main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Main Content"
+                android:clickable="true"
+                android:focusable="false"
+                android:focusableInTouchMode="true"
+                android:textSize="16sp" />
+        </LinearLayout>
+        
+    <SlidingDrawer
+        android:id="@+id/SlidingDrawer"
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:layout_alignParentBottom="true"
+        android:content="@+id/contentLayout"
+        android:handle="@+id/slideButton"
+        android:orientation="vertical"
+        android:padding="10dip"
+         >
+
+      
+        
+        
+            
+           
+            
+    
+        
+         <Button
+            android:id="@+id/profile"
+             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Profile" >
+        </Button>
+    
+      <Button
+            android:id="@+id/slideButton"
+            android:layout_width="wrap_content"
+           
+            android:layout_height="wrap_content"
+            android:text="Create Post" >
+        </Button>
+     
+       <Button
+            android:id="@+id/settings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="settings"
+             android:layout_weight="1" >
+        </Button>
+        
+        
+
+
+inside sliding drawer 
+        <LinearLayout
+            android:id="@+id/contentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="360dp"
+            android:background="#fff000"
+            android:orientation="vertical"
+             >
+
+            <Button
+                android:id="@+id/Button01"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:text="Button 1" >
+            </Button>
+
+            <Button
+                android:id="@+id/Button03"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:text="Button 3" />
+
+            <Button
+                android:id="@+id/Button02"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:text="Button 2" >
+            </Button>
+        </LinearLayout>
+    </SlidingDrawer>
+
+</RelativeLayout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Drag the control at the bottom"
+        android:textSize="20dp"
+        tools:context=".SlidingDrawerActivity" />
+        
+<LinearLayout 
+        android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        tools:context=".SlidingDrawerActivity" >
+
+    </ListView>
+    
+    <LinearLayout 
+        android:id="@+id/tabbar"
+        android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+     <Button
+            android:id="@+id/profile"
+             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Profile" >
+        </Button>
+    
+      <Button
+            android:id="@+id/newpost"
+             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="newpost" 
+            android:visibility="invisible"
+             android:background="@null"
+             android:layout_weight="1">
+        </Button>
+     
+       <Button
+            android:id="@+id/settings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="settings"
+             android:layout_weight="1" >
+        </Button>
+      </LinearLayout>
+</LinearLayout>
+    <SlidingDrawer
+        android:id="@+id/SlidingDrawer"
+          
+        android:layout_width="match_parent"
+        android:layout_height="150dip"
+        android:layout_alignParentBottom="true"
+        android:content="@+id/contentLayout"
+        android:handle="@+id/slideButton"
+        android:orientation="vertical"
+        >
+<LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/settings"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Newpost"
+           
+           >      </Button>
+       <Button
+            android:id="@+id/profile"
+           android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Newpost"
+           
+           >      </Button>
+       
+       
+           <Button
+            android:id="@+id/newpost"
+            
+         android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Newpost"
+           
+           >
+            
+            
+
+        </Button>
+        
+           
+
+        
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/contentLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dip" >
+           
+           
+  
+            <android.support.v4.view.ViewPager
+                android:background="#fff"
+                android:id="@+id/vpPager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+            </android.support.v4.view.ViewPager>
+            
+        </LinearLayout>
+    </SlidingDrawer>
+    
+</RelativeLayout>
+    
+
+ -->

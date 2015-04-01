@@ -1,0 +1,190 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${packageName}.${activityClass}"
+    android:orientation="vertical" >
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginRight="15dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Request On "
+       
+        android:id="@+id/tv_requeston"/>
+
+    <EditText
+        android:id="@+id/et_RequestedtutoringOn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:focusable="false"
+        android:gravity="center"
+        android:hint="Request Date"
+        android:onClick="showDatePickerDialogForRequestOn"
+        android:textSize="15dp"
+        android:layout_marginRight="10dp" >
+
+   
+    </EditText>
+    
+    </LinearLayout>
+    
+      <LinearLayout 
+        android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginRight="15dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="From  Time "
+       
+        android:id="@+id/tv_fromtime"/>
+
+    <EditText
+        android:id="@+id/et_tutoringfromtime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:focusable="false"
+        android:gravity="center"
+        android:hint="From Time"
+        android:onClick="showTimePickerDialogFromTime"
+        android:textSize="15dp"
+        android:layout_marginRight="10dp" >
+
+   
+    </EditText>
+    
+    </LinearLayout>
+    
+          <LinearLayout 
+        android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginRight="15dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To Time      "
+       
+        android:id="@+id/tv_totime"/>
+
+    <EditText
+        android:id="@+id/et_tutoringtotime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:focusable="false"
+        android:gravity="center"
+        android:hint="From Time  "
+        android:onClick="showTimePickerDialogToTime"
+        android:textSize="15dp"
+        android:layout_marginRight="10dp" >
+
+   
+    </EditText>
+    
+    </LinearLayout>
+    
+          
+            <LinearLayout 
+        android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginRight="15dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Subjects:    "
+       
+        android:id="@+id/tv_Subjects"/>
+
+   
+ <EditText
+        android:id="@+id/et_tutoringsubjects"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:ems="10"
+       
+        android:gravity="center"
+        android:hint="Enter Your Subjects here"
+       
+        android:textSize="15dp"
+        >
+          
+           </EditText>
+   
+   
+    
+    </LinearLayout>
+    
+                  <LinearLayout 
+        android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginRight="15dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description  "
+       
+        android:id="@+id/tv_description"/>
+
+   
+ <EditText
+        android:id="@+id/et_tutoringdescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:ems="10"
+      
+        android:gravity="center"
+        android:hint="Description"
+       
+        android:textSize="15dp"
+        >
+          
+           </EditText>
+   
+   
+    
+    </LinearLayout>
+    
+    
+                  
+                  <Button 
+                      android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:text="Create "
+        android:layout_marginBottom="10dp"
+        android:id="@+id/btn_createtutoringservice"
+                      />
+
+</LinearLayout>

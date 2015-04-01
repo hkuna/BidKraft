@@ -1,0 +1,204 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${packageName}.${activityClass}"
+    android:orientation="vertical" >
+    
+    
+       <LinearLayout 
+        android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginRight="15dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Book Title:    "
+       
+        android:id="@+id/tv_title"/>
+
+   
+ <EditText
+        android:id="@+id/et_sellbooktitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:ems="10"
+      
+        android:gravity="center"
+        
+       
+        android:textSize="15dp"
+        />
+    
+
+
+</LinearLayout>
+
+          <LinearLayout 
+        android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginRight="15dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Author:    "
+       
+        android:id="@+id/tv_author"/>
+
+   
+ <EditText
+        android:id="@+id/et_sellbookauthor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+       
+        android:gravity="center"
+        android:textSize="15dp"
+        />
+    
+
+
+</LinearLayout>
+
+            <LinearLayout 
+        android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginRight="15dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edition:    "
+       
+        android:id="@+id/tv_edition"/>
+
+   
+ <EditText
+        android:id="@+id/et_sellbookedition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+       
+        android:gravity="center"
+        android:textSize="15dp"
+        />
+    
+
+
+</LinearLayout>
+
+          <LinearLayout 
+        android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginRight="15dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Request On:    "
+       
+        android:id="@+id/tv_requestedon"/>
+
+   
+ <EditText
+        android:id="@+id/et_sellrequestdateon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+       
+        android:gravity="center"
+        android:textSize="15dp"
+         android:onClick="showDatePickerDialogForSellBookRequestOn"
+        
+        />
+    
+
+
+</LinearLayout>
+
+                  <LinearLayout 
+        android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginRight="15dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cost :    "
+       
+        android:id="@+id/tv_cost"/>
+
+   
+ <EditText
+        android:id="@+id/et_sellbookcost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        
+        android:gravity="center"
+        android:textSize="15dp"
+        
+        />
+    
+
+
+</LinearLayout>
+
+<LinearLayout 
+        android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginRight="15dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description :    "
+        android:id="@+id/tv_description"/>
+
+   
+ <EditText
+        android:id="@+id/et_bookselldescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        
+        android:gravity="center"
+        android:textSize="15dp"
+        
+        />
+
+</LinearLayout>
+          
+           <Button 
+                      android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:text="Create "
+        android:id="@+id/btn_createselltextbookpost"
+        android:layout_marginBottom="10dp"
+                      />
+
+       
+</LinearLayout>

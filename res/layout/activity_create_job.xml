@@ -1,0 +1,125 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".CreateJobActivity"
+    android:background="#BDC3C7">
+
+    <LinearLayout
+        android:id="@+id/lletTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ECF0F1"
+        android:layout_marginBottom="10dp">
+        <EditText
+            android:id="@+id/etTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textSize="22sp"
+            android:textColor="#34495E"
+            android:textColorHint="#737f8b"
+            android:hint="Job Title"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llDateAndTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/lletTitle"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/tvRequestDate"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Requested Date"
+            android:gravity="center"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_marginRight="5dp"
+            android:textSize="20sp"
+            android:background="#ECF0F1"
+            android:textColor="#34495E"/>
+
+        <TextView
+            android:id="@+id/tvBiddingEnds"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Bidding Ends"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:textSize="20sp"
+            android:background="#ECF0F1"
+            android:drawableRight="@drawable/ic_dropdown"
+            android:textColor="#34495E"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvTags"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llDateAndTime"
+        android:text="Tags"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textSize="20sp"
+        android:background="#ECF0F1"
+        android:textColor="#34495E"/>
+
+    <View
+        android:id="@+id/orangeBar"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#F39C12"
+        android:layout_below="@+id/tvTags" />
+
+   <harish.custom.view.FlowLayout
+        android:id="@+id/tagsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#ECF0F1"
+        android:layout_below="@+id/orangeBar"
+        android:layout_marginBottom="10dp"/>
+ 
+
+    <LinearLayout
+        android:id="@+id/lletDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ECF0F1"
+        android:layout_below="@+id/tagsLayout"
+        android:layout_alignParentBottom="true">
+    <EditText
+        android:id="@+id/etDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textSize="22sp"
+        android:textColor="#34495E"
+        android:textColorHint="#737f8b"
+        android:hint="Job Description"/> </LinearLayout>
+
+</RelativeLayout>

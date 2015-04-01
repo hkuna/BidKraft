@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ECF0F1"
+    android:orientation="vertical" 
+  
+ >
+
+   
+<RelativeLayout 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ECF0F1"
+    android:layout_marginTop="5dp">
+    <TextView
+          android:layout_gravity="center"
+        android:id="@+id/tv_request_subject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Baby Sitter needed for Saturday Night "
+        android:maxLines="1"
+        android:textSize="20sp"
+        
+      
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="#F39C12" 
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+       
+        
+     
+        
+        />
+
+    <ImageButton
+        android:id="@+id/ib_roleIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:contentDescription="abc"
+        
+        android:src="@drawable/client_icon" 
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>"
+    
+    </RelativeLayout>
+ 
+    
+
+
+
+
+</LinearLayout>
