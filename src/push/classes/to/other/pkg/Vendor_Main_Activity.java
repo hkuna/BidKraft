@@ -13,6 +13,7 @@ import android.app.ActionBar.TabListener;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -20,17 +21,24 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.babloosashi.neighbour.R;
+import com.google.android.gms.internal.ib;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
 public class Vendor_Main_Activity extends FragmentActivity implements
 		TabListener , OnServerSuccessCallListener{
 
-	ActionBar ab;
+
 	String Tag = "Vendor_MAin_Activity";
 	ViewPager mViewPager;
 	Context context;
@@ -38,27 +46,74 @@ public class Vendor_Main_Activity extends FragmentActivity implements
     int serversuccescount =0;
     ProgressDialog progress;
     ServerConnector mServerConnector;
+    ImageView ib_createPost,ib_settings;
+    ActionBar bar;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_vendor__main);
+		setContentView(R.layout.requestor_home); //changed here
 		mServerConnector = new ServerConnector(Vendor_Main_Activity.this);
 		context = Vendor_Main_Activity.this;
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
-		ab = getActionBar();
+		//changes 
+		  ib_createPost = (ImageView) findViewById(R.id.ib_createpost);
+		    ib_settings = (ImageView) findViewById(R.id.ib_settings);
+		    ib_createPost.setVisibility(View.GONE);
+		    ib_settings.setVisibility(View.GONE);
+		    
+		    
+		    
+		    bar = getActionBar();
+			bar.setDisplayShowHomeEnabled(false);
+			bar.setDisplayShowTitleEnabled(false);
+			LayoutInflater mInflater = LayoutInflater.from(this);
+			View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
+			TextView mRequestTitle = (TextView) mCustomView.findViewById(R.id.tv_request_subject);
+			ImageButton ib_roleicon = (ImageButton) mCustomView
+					.findViewById(R.id.ib_roleIcon);
+			
+			mRequestTitle.setText("Vendor Home");
+			
+			mRequestTitle.setTextColor(Color.rgb(243, 156, 18));
+		
+			
+			ib_roleicon.setBackgroundDrawable(getResources().getDrawable(R.drawable.vendor_icon));
+			
+			
+			ib_roleicon.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					
+					//handle the role icon action
+					
+					switchScreen();
+				}
+			});
+		    
+		
+			bar.setCustomView(mCustomView);
+			bar.setDisplayShowCustomEnabled(true);
 
-		ab.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		ActionBar.Tab currentsBids = ab.newTab();
+		bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		ActionBar.Tab currentsBids = bar.newTab();
 		currentsBids.setText("Open Bids");
 		currentsBids.setTabListener(this);
 
-		ActionBar.Tab openBids = ab.newTab();
+		ActionBar.Tab openBids = bar.newTab();
 		openBids.setText("Placed Bids");
 		openBids.setTabListener(this);
 
-		ab.addTab(currentsBids);
-		ab.addTab(openBids);
+		ActionBar.Tab bidswon = bar.newTab();
+		bidswon.setText("Bids Won");
+		bidswon.setTabListener(this);
+		
+		bar.addTab(currentsBids);
+		bar.addTab(openBids);
+		bar.addTab(bidswon);
+	
 
 		mViewPager
 				.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -66,8 +121,9 @@ public class Vendor_Main_Activity extends FragmentActivity implements
 					@Override
 					public void onPageSelected(int arg0) {
 						// TODO Auto-generated method stub
+						bar.setSelectedNavigationItem(arg0);
 
-						ab.setSelectedNavigationItem(arg0);
+						
 
 					}
 
@@ -138,27 +194,7 @@ public class Vendor_Main_Activity extends FragmentActivity implements
 
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu items for use in the action bar
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.main_activity_actions, menu);
-		return super.onCreateOptionsMenu(menu);
-
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case R.id.vendor_consumer:
-			Log.d(tag, "toggle clicked");
-			switchScreen();
-			return true;
-
-		default:
-			return super.onOptionsItemSelected(item);
-		}
-	}
+	
 
 	private void switchScreen() {
 		// call webservices to update the data of user role

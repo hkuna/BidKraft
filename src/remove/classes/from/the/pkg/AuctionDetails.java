@@ -54,12 +54,12 @@ public class AuctionDetails extends ListActivity implements
 	String fromfragment;
 	String role;
 
-	@Override
+	@Override         
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_auction_details);
 		extras = getIntent().getExtras();
-		
+		mServerConnector = new ServerConnector(this);
 		
 		//setting the custom bar
 		ActionBar bar = getActionBar();
@@ -110,7 +110,7 @@ public class AuctionDetails extends ListActivity implements
 				{
 					tvDescription.setText("Description : "+CommonData.getOpenBidsData().get(onListItemClickedId).getDescription());
 					tvUserName.setText("UserName : "+CommonData.getUserId());
-					timeLeft.setText("Request Start Date : "+CommonData.getOpenBidsData().get(onListItemClickedId).getRequestStartDate().subSequence(0, 16));
+					timeLeft.setText("Request Start Date : "+CommonData.getOpenBidsData().get(onListItemClickedId).getRequestStartTime());
 					
 					placeBid_Or_CancelRequest.setText("Place Bid");
 					Log.d(tag, "reached open bid control inside auctions page");
@@ -138,7 +138,7 @@ public class AuctionDetails extends ListActivity implements
 					Log.d(tag, "reached placed bid control inside auctions page");
 					tvDescription.setText("Description : "+CommonData.getPlacedBidsData().get(onListItemClickedId).getDescription());
 					tvUserName.setText("UserName : "+CommonData.getUserId());
-					timeLeft.setText("Request Start Date : "+CommonData.getPlacedBidsData().get(onListItemClickedId).getRequestStartDate().subSequence(0, 16));
+					timeLeft.setText("Request Start Date : "+CommonData.getPlacedBidsData().get(onListItemClickedId).getRequestStartTime());
 					
 					if(CommonData.getPlacedBidsData().get(onListItemClickedId).getBids().size()!=0)
 					{
@@ -179,7 +179,7 @@ public class AuctionDetails extends ListActivity implements
 							.getOpenRequestsData().get(onListItemClickedId);
 					tvDescription.setText("Description : "+ob.getDescription());
 					tvUserName.setText("UserName : "+CommonData.getUserId());
-					timeLeft.setText("Request Start Date : "+ob.getRequestStartDate().subSequence(0, 16));
+					timeLeft.setText("Request Start Date : "+ob.getRequestStartTime());
 					
 					if (ob.getBids().size() != 0) {
 						getListView().setVisibility(View.VISIBLE);
@@ -198,7 +198,7 @@ public class AuctionDetails extends ListActivity implements
 							.getAcceptedRequestsData().get(onListItemClickedId);
 					tvDescription.setText("Description : "+ob_acp.getDescription());
 					tvUserName.setText("UserName : "+CommonData.getUserId());
-					timeLeft.setText("Request Start Date : "+ob_acp.getRequestStartDate().subSequence(0,16));
+					timeLeft.setText("Request Start Date : "+ob_acp.getRequestStartTime());
 					if (ob_acp.getBids().size() != 0) {
 						getListView().setVisibility(View.VISIBLE);
 						setListAdapter(mUserMainListAdapter);
@@ -216,7 +216,7 @@ public class AuctionDetails extends ListActivity implements
 							.getServicedRequestsData().get(onListItemClickedId);
 					tvDescription.setText("Description : "+ob_serv_req_data.getDescription());
 					tvUserName.setText("UserName : "+CommonData.getUserId());
-					timeLeft.setText("Request Start Date : "+ob_serv_req_data.getRequestStartDate().subSequence(0,16));
+					timeLeft.setText("Request Start Date : "+ob_serv_req_data.getRequestStartTime());
 					if (ob_serv_req_data.getBids().size() != 0) {
 						getListView().setVisibility(View.VISIBLE);
 						setListAdapter(mUserMainListAdapter);

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal" 
-    android:background="@drawable/userrowitemshape"
+    android:background="@drawable/round_corners"
     android:layout_margin="10dp"
     android:padding="2dp"
     >

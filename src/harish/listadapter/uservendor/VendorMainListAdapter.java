@@ -41,7 +41,7 @@ public class VendorMainListAdapter extends BaseAdapter {
 	private String role;
 	private ServerConnector mServerConnector;
 	private ProgressDialog progress;
-
+	private TextView tv_serviceSubject , tv_leastbidamount;
 	public VendorMainListAdapter(Context context, String from_fragment,
 			String role, int clickedid) {
 		this.from_fragment = from_fragment;
@@ -181,7 +181,7 @@ if (role.equalsIgnoreCase("auction")) {
 			} else {
 				// if not from auction screen
 
-				rootview = inflater.inflate(R.layout.requestrow, null);
+				rootview = inflater.inflate(R.layout.userlistitem, null);
 				initializeViewElements(rootview, "R.layout.requestrow");
 
 				if (from_fragment
@@ -220,7 +220,7 @@ if (role.equalsIgnoreCase("auction")) {
 		// if not auction
 		
 		else {
-			rootview = inflater.inflate(R.layout.requestrow, null);
+			rootview = inflater.inflate(R.layout.userlistitem, null);
 			 initializeViewElements(rootview, "R.layout.requestrow");
 			if (from_fragment
 					.equalsIgnoreCase(CommonData.openBidsForVendorFragment))
@@ -267,15 +267,18 @@ if (role.equalsIgnoreCase("auction")) {
 						.getPlacedBidsData().get(position);
 			}
 			
-			date.setText(o.getCreatedDate().subSequence(0, 7)); 
+		/*	date.setText(o.getCreatedDate().subSequence(0, 7)); 
 			time.setText(o.getCreatedDate().subSequence(17, 22));
 			leastbids.setText("Lowest bid : " + o.getLeastBidAmount());
-			totalbids.setText("Toatal Bids :" + o.getTotalBids());
+			totalbids.setText("Toatal Bids :" + o.getTotalBids());*/
+			
+			tv_serviceSubject.setText(o.getDescription());
+			tv_leastbidamount.setText("$"+o.getLeastBidAmount()+"/hr");
 
 			Log.d(tag, "category id value " + o.getCategoryId().toString());
 
-			CommonData.setCategoryImage(o.getCategoryId().toString(), vi,
-					context, categoryidimage);
+			/*CommonData.setCategoryImage(o.getCategoryId().toString(), vi,
+					context, categoryidimage);*/
 		}
 
 	}
@@ -284,13 +287,16 @@ if (role.equalsIgnoreCase("auction")) {
 
 	private void initializeViewElements(View rootview, String from_xml_file) {
 		if (from_xml_file.equalsIgnoreCase("R.layout.requestrow")) {
-			date = (TextView) rootview.findViewById(R.id.tvdate);
+			/*date = (TextView) rootview.findViewById(R.id.tvdate);
 			time = (TextView) rootview.findViewById(R.id.tvtime);
 			newbids = (TextView) rootview.findViewById(R.id.tvNewbids);
 			categoryidimage = (ImageView) rootview
 					.findViewById(R.id.categoryid);
 			leastbids = (TextView) rootview.findViewById(R.id.tvleastbid);
-			totalbids = (TextView) rootview.findViewById(R.id.tvtotalbids);
+			totalbids = (TextView) rootview.findViewById(R.id.tvtotalbids);*/
+			
+			tv_serviceSubject = (TextView) rootview.findViewById(R.id.tv_servicedetails);
+			tv_leastbidamount =(TextView) rootview.findViewById(R.id.tv_bidamount);
 		}
 
 		else if (from_xml_file.equalsIgnoreCase("R.layout.offersrow")) {

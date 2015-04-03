@@ -4,10 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical" 
     android:background="#BDC3C7"
-  
-    >
+>
     
-    <ScrollView
+  <!--   <ScrollView
         android:id="@+id/sv"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
@@ -15,12 +14,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-         >
-<RelativeLayout
+         > -->
+<!--  <RelativeLayout
             android:layout_width= "match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/rl_top"
-            >
+            android:layout_alignParentTop="true"
+            > -->
             
             <TextView
                 android:id="@+id/tv_date"
@@ -53,38 +53,48 @@
                 
                 />
            
-            
+              
             		
             
-        </RelativeLayout>
-        
-        </ScrollView>
+<!--     </RelativeLayout> -->
+<!--         </ScrollView> -->
+          
+         
 
-    
-    
-                <ListView
-                android:id="@+id/lv_bidHistory"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#ECF0F1"
-                android:layout_below="@+id/sv" >
+              
+  
+    <LinearLayout
+         android:id="@+id/LinearLayout" 
+        android:orientation="vertical"
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:gravity="bottom"
+        android:layout_below="@+id/tv_description"
+        >
+        
+         <ListView
+              android:id="@android:id/list"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+            
+              android:background="#ECF0F1" 
+              >
 
             </ListView>
-    <RelativeLayout 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         
-        android:id="@+id/rl_anchorView"
-        android:background="#ECF0F1"
-        android:layout_marginTop="2dp"
-        android:layout_below="@+id/lv_bidHistory"
-     
+        
+            <LinearLayout android:id="@+id/LinearLayout1" 
+        android:orientation="horizontal"
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:weightSum="2"
         >
+        
            <EditText
                android:id="@+id/et_bidAmount"
-               android:layout_width="wrap_content"
+               android:layout_width="0dp"
                android:layout_height="wrap_content"
+               android:layout_weight="1"
                android:layout_above="@+id/tv_timeleft"
                android:layout_alignParentLeft="true"
                android:layout_alignParentStart="true"
@@ -93,8 +103,9 @@
            
            <Button
                android:id="@+id/btn_bid"
-               android:layout_width="wrap_content"
+               android:layout_width="0dp"
                android:layout_height="wrap_content"
+               android:layout_weight="1"
                android:layout_above="@+id/tv_lowestbid"
                android:layout_alignParentEnd="true"
                android:layout_alignParentRight="true"
@@ -104,11 +115,20 @@
                android:text="Bid"
                android:textColor="#fff"
                android:textStyle="bold" />
+           </LinearLayout>
+           
+            <LinearLayout android:id="@+id/LinearLayout2" 
+        android:orientation="horizontal"
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:weightSum="2"
+        >
     
    <TextView  
        android:id="@+id/tv_timeleft"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content" 
+        android:layout_width="0dp" 
+        android:layout_weight="1"
         android:layout_alignParentBottom="true"
         android:background="#E74C3C"
         android:layout_alignParentLeft="true"
@@ -119,12 +139,13 @@
         
      />
    
-   <TextView 
    
+   <TextView 
+       android:layout_weight="1"
        android:id = "@+id/tv_lowestbid"
        android:layout_height="wrap_content"
-        android:layout_width="wrap_content" 
-            android:layout_toRightOf="@+id/tv_timeleft"
+       android:layout_width="0dp" 
+       android:layout_toRightOf="@+id/tv_timeleft"
        android:layout_toEndOf="@+id/tv_timeleft"
        android:layout_alignParentBottom="true"
        android:layout_alignParentRight="true"
@@ -135,5 +156,8 @@
         android:background="#2ECC71"   
        />
 
-</RelativeLayout>
+ </LinearLayout>
+ </LinearLayout>
+
+
 </RelativeLayout>
