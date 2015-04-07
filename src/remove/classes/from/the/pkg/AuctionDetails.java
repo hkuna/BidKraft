@@ -1,5 +1,6 @@
 package remove.classes.from.the.pkg;
 
+import harish.custom.view.ExpandableDropView;
 import harish.listadapter.uservendor.UserMainListAdapter;
 import harish.listadapter.uservendor.VendorMainListAdapter;
 import harish.requestor.commondata.CommonData;
@@ -57,9 +58,11 @@ public class AuctionDetails extends ListActivity implements
 	@Override         
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_auction_details);
+		setContentView(R.layout.details);
 		extras = getIntent().getExtras();
 		mServerConnector = new ServerConnector(this);
+		
+		
 		
 		//setting the custom bar
 		ActionBar bar = getActionBar();
@@ -88,7 +91,7 @@ public class AuctionDetails extends ListActivity implements
 		// end of custom action bar setting
 		
 
-		placeBid_Or_CancelRequest = (Button) findViewById(R.id.placecancl);
+	/*	placeBid_Or_CancelRequest = (Button) findViewById(R.id.placecancl);
 		tvDescription = (TextView) findViewById(R.id.description);
 		timeLeft = (TextView) findViewById(R.id.timeleft);
 		offers = (TextView) findViewById(R.id.offers);
@@ -230,7 +233,7 @@ public class AuctionDetails extends ListActivity implements
 
 			}
 
-		}
+		}*/
 
 	}
 

@@ -6,60 +6,81 @@
     android:background="#BDC3C7"
 >
     
-  <!--   <ScrollView
+     <ScrollView
         android:id="@+id/sv"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-         > -->
-<!--  <RelativeLayout
+        
+         > 
+  <RelativeLayout
             android:layout_width= "match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/rl_top"
-            android:layout_alignParentTop="true"
-            > -->
+            > 
+            
+      <LinearLayout 
+          android:layout_width= "match_parent"
+          android:layout_height="wrap_content"
+          android:background="#BDC3C7"
+          android:orientation="horizontal"
+          android:weightSum="2"
+          android:id="@+id/ll_ur"
+          >
             
             <TextView
                 android:id="@+id/tv_date"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
+                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="DAte : 2/3/15" >
             </TextView>
             
             <TextView
+                  android:layout_weight="1"
                 android:id="@+id/tv_username"
-                 android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" 
                 android:text=" username "
                 >
             </TextView>
+            </LinearLayout>
             
             <TextView
                 android:id="@+id/tv_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_username"
+                android:layout_below="@+id/ll_ur"
                 android:text ="The description of the request and extra extra goes here" 
                 android:inputType="textMultiLine"
                 
                 />
            
-              
-            		
+               <!--    <ListView
+              android:id="@android:id/list"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/tv_description"
+              android:background="#ECF0F1" 
+              >
+
+            </ListView> -->
             
-<!--     </RelativeLayout> -->
-<!--         </ScrollView> -->
+            <harish.custom.view.ExpandableDropView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/expandableView"
+                android:layout_below="@+id/tv_description">
+            
+                
+            		</harish.custom.view.ExpandableDropView>
+            
+   </RelativeLayout> 
+    </ScrollView> 
           
-         
+     
 
               
   
@@ -69,19 +90,9 @@
         android:layout_width="match_parent" 
         android:layout_height="wrap_content" 
         android:gravity="bottom"
-        android:layout_below="@+id/tv_description"
+        android:layout_below="@+id/sv"
+        android:layout_alignParentBottom="true"
         >
-        
-         <ListView
-              android:id="@android:id/list"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-            
-              android:background="#ECF0F1" 
-              >
-
-            </ListView>
-        
         
             <LinearLayout android:id="@+id/LinearLayout1" 
         android:orientation="horizontal"

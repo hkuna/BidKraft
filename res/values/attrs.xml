@@ -11,7 +11,9 @@
     <declare-styleable name="Theme">
         <attr name="circularImageViewStyle" format="reference"></attr>
     </declare-styleable>
-    
+     <declare-styleable name="ExpandableDropView">
+        <attr name="titleText" format="string" localization="suggested" />
+    </declare-styleable>
     
     <declare-styleable name="FlowLayout">
         <attr name="android:orientation" />

@@ -204,7 +204,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int debugDraw=0x7f010026;
+        public static final int debugDraw=0x7f010027;
         /**  Google Wallet environment to use 
          <p>Must be one of the following constant values.</p>
 <table>
@@ -245,7 +245,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>rtl</code></td><td>1</td><td></td></tr>
 </table>
          */
-        public static final int layoutDirection=0x7f010025;
+        public static final int layoutDirection=0x7f010026;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -253,7 +253,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int layout_newLine=0x7f010028;
+        public static final int layout_newLine=0x7f010029;
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -261,7 +261,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int layout_weight=0x7f010029;
+        public static final int layout_weight=0x7f01002a;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -347,6 +347,14 @@ containing a value of this type.
 </table>
          */
         public static final int theme=0x7f010011;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int titleText=0x7f010025;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -410,7 +418,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int weightDefault=0x7f010027;
+        public static final int weightDefault=0x7f010028;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -678,82 +686,85 @@ containing a value of this type.
         public static final int custom_theme_textfield_focused_holo_light=0x7f0200ca;
         public static final int customer_support_edittext_feild=0x7f0200cb;
         public static final int customersupport_textfield_activated_holo_light=0x7f0200cc;
-        public static final int facebook=0x7f0200cd;
-        public static final int fb=0x7f0200ce;
-        public static final int fblogin=0x7f0200cf;
-        public static final int final_login_logo=0x7f0200d0;
-        public static final int finallogo=0x7f0200d1;
-        public static final int home_repair=0x7f0200d2;
-        public static final int house_clean=0x7f0200d3;
-        public static final int houserepairbackground=0x7f0200d4;
-        public static final int ic_bidder=0x7f0200d5;
-        public static final int ic_drawer=0x7f0200d6;
-        public static final int ic_dropdown=0x7f0200d7;
-        public static final int ic_launcher=0x7f0200d8;
-        public static final int ic_plusone_medium_off_client=0x7f0200d9;
-        public static final int ic_plusone_small_off_client=0x7f0200da;
-        public static final int ic_plusone_standard_off_client=0x7f0200db;
-        public static final int ic_plusone_tall_off_client=0x7f0200dc;
-        public static final int ic_search=0x7f0200dd;
-        public static final int ic_stat_gcm=0x7f0200de;
-        public static final int login=0x7f0200df;
-        public static final int login_logo=0x7f0200e0;
-        public static final int my_computer=0x7f0200e1;
-        public static final int openrequest=0x7f0200e2;
-        public static final int pet_care=0x7f0200e3;
-        public static final int powered_by_google_dark=0x7f0200e4;
-        public static final int powered_by_google_light=0x7f0200e5;
-        public static final int profile_ghost=0x7f0200e6;
-        public static final int round_corners=0x7f0200e7;
-        public static final int settings=0x7f0200e8;
-        public static final int transperent_color=0x7f0200ef;
-        public static final int tutoring=0x7f0200e9;
-        public static final int tutoringbackground=0x7f0200ea;
-        public static final int userrowitemshape=0x7f0200eb;
-        public static final int usersettings=0x7f0200ec;
-        public static final int vendor_consumer_switch=0x7f0200ed;
-        public static final int vendor_icon=0x7f0200ee;
+        public static final int downarrow=0x7f0200cd;
+        public static final int facebook=0x7f0200ce;
+        public static final int fb=0x7f0200cf;
+        public static final int fblogin=0x7f0200d0;
+        public static final int final_login_logo=0x7f0200d1;
+        public static final int finallogo=0x7f0200d2;
+        public static final int home_repair=0x7f0200d3;
+        public static final int house_clean=0x7f0200d4;
+        public static final int houserepairbackground=0x7f0200d5;
+        public static final int ic_bidder=0x7f0200d6;
+        public static final int ic_drawer=0x7f0200d7;
+        public static final int ic_dropdown=0x7f0200d8;
+        public static final int ic_launcher=0x7f0200d9;
+        public static final int ic_plusone_medium_off_client=0x7f0200da;
+        public static final int ic_plusone_small_off_client=0x7f0200db;
+        public static final int ic_plusone_standard_off_client=0x7f0200dc;
+        public static final int ic_plusone_tall_off_client=0x7f0200dd;
+        public static final int ic_search=0x7f0200de;
+        public static final int ic_stat_gcm=0x7f0200df;
+        public static final int login=0x7f0200e0;
+        public static final int login_logo=0x7f0200e1;
+        public static final int my_computer=0x7f0200e2;
+        public static final int openrequest=0x7f0200e3;
+        public static final int pet_care=0x7f0200e4;
+        public static final int powered_by_google_dark=0x7f0200e5;
+        public static final int powered_by_google_light=0x7f0200e6;
+        public static final int profile_ghost=0x7f0200e7;
+        public static final int round_corners=0x7f0200e8;
+        public static final int settings=0x7f0200e9;
+        public static final int transperent_color=0x7f0200f1;
+        public static final int tutoring=0x7f0200ea;
+        public static final int tutoringbackground=0x7f0200eb;
+        public static final int uarrow=0x7f0200ec;
+        public static final int userrowitemshape=0x7f0200ed;
+        public static final int usersettings=0x7f0200ee;
+        public static final int vendor_consumer_switch=0x7f0200ef;
+        public static final int vendor_icon=0x7f0200f0;
     }
     public static final class id {
-        public static final int LinearLayout=0x7f08006e;
-        public static final int LinearLayout1=0x7f08006f;
-        public static final int LinearLayout2=0x7f080074;
-        public static final int SlidingDrawer=0x7f0800b4;
-        public static final int action_settings=0x7f0800c6;
-        public static final int bidAccept=0x7f080094;
-        public static final int biddername=0x7f080090;
-        public static final int bidderoffer=0x7f080093;
-        public static final int bidderpic=0x7f08008e;
-        public static final int bidslist=0x7f080080;
+        public static final int LinearLayout=0x7f080072;
+        public static final int LinearLayout1=0x7f080073;
+        public static final int LinearLayout2=0x7f080078;
+        public static final int SlidingDrawer=0x7f0800bd;
+        public static final int action_settings=0x7f0800cf;
+        public static final int bidAccept=0x7f08009d;
+        public static final int biddername=0x7f080099;
+        public static final int bidderoffer=0x7f08009c;
+        public static final int bidderpic=0x7f080097;
+        public static final int bidslist=0x7f080089;
+        public static final int biduser=0x7f080079;
         public static final int book_now=0x7f080010;
         public static final int btn_Submit=0x7f080057;
-        public static final int btn_baiscinfo=0x7f0800ac;
-        public static final int btn_bid=0x7f080072;
+        public static final int btn_baiscinfo=0x7f0800b5;
+        public static final int btn_bid=0x7f080076;
         public static final int btn_createselltextbookpost=0x7f080031;
         public static final int btn_createtutoringservice=0x7f08003b;
-        public static final int btn_f_password=0x7f080087;
+        public static final int btn_f_password=0x7f080090;
         public static final int btn_forgotPassword=0x7f080060;
         public static final int btn_login=0x7f08005f;
         public static final int btn_save=0x7f080053;
         public static final int btn_signup=0x7f080061;
         public static final int btn_userPreferencesSubmit=0x7f08005b;
         public static final int btn_vendorPreferencesSubmit=0x7f08005d;
-        public static final int but2=0x7f080078;
-        public static final int button1=0x7f08007a;
-        public static final int button2=0x7f08007c;
-        public static final int button3=0x7f08007e;
+        public static final int but2=0x7f080081;
+        public static final int button1=0x7f080083;
+        public static final int button2=0x7f080085;
+        public static final int button3=0x7f080087;
         public static final int buyButton=0x7f08000a;
         public static final int buyItBtn=0x7f080047;
         public static final int buy_now=0x7f08000f;
         public static final int buy_with_google=0x7f08000e;
-        public static final int categoryid=0x7f0800a0;
+        public static final int categoryid=0x7f0800a9;
         public static final int chk_bx_vendor_categorylist=0x7f080066;
         public static final int classic=0x7f080011;
-        public static final int contentLayout=0x7f0800b5;
-        public static final int createList=0x7f080075;
+        public static final int contentLayout=0x7f0800be;
+        public static final int createList=0x7f08007c;
         public static final int date=0x7f080042;
         public static final int description=0x7f080017;
-        public static final int drawer_layou=0x7f080099;
+        public static final int drawer_layou=0x7f0800a2;
         public static final int etAddress=0x7f08004f;
         public static final int etCity=0x7f080050;
         public static final int etComments=0x7f080056;
@@ -763,22 +774,22 @@ containing a value of this type.
         public static final int etTitle=0x7f08001c;
         public static final int etZip=0x7f080052;
         public static final int et_RequestedtutoringOn=0x7f080033;
-        public static final int et_bidAmount=0x7f080070;
+        public static final int et_bidAmount=0x7f080074;
         public static final int et_bookselldescription=0x7f080030;
         public static final int et_cs_subject=0x7f08003e;
-        public static final int et_email=0x7f0800a8;
-        public static final int et_fname=0x7f0800a6;
-        public static final int et_hr_address=0x7f08008d;
-        public static final int et_hr_date=0x7f08008a;
-        public static final int et_hr_description=0x7f08008c;
-        public static final int et_hr_fromtime=0x7f080088;
-        public static final int et_hr_totime=0x7f080089;
+        public static final int et_email=0x7f0800b1;
+        public static final int et_fname=0x7f0800af;
+        public static final int et_hr_address=0x7f080096;
+        public static final int et_hr_date=0x7f080093;
+        public static final int et_hr_description=0x7f080095;
+        public static final int et_hr_fromtime=0x7f080091;
+        public static final int et_hr_totime=0x7f080092;
         public static final int et_issue_description=0x7f080040;
-        public static final int et_lname=0x7f0800a7;
-        public static final int et_numKids=0x7f08008b;
-        public static final int et_password=0x7f080085;
-        public static final int et_paswd=0x7f0800ab;
-        public static final int et_phonenum=0x7f0800aa;
+        public static final int et_lname=0x7f0800b0;
+        public static final int et_numKids=0x7f080094;
+        public static final int et_password=0x7f08008e;
+        public static final int et_paswd=0x7f0800b4;
+        public static final int et_phonenum=0x7f0800b3;
         public static final int et_sellbookauthor=0x7f080028;
         public static final int et_sellbookcost=0x7f08002e;
         public static final int et_sellbookedition=0x7f08002a;
@@ -788,10 +799,11 @@ containing a value of this type.
         public static final int et_tutoringfromtime=0x7f080035;
         public static final int et_tutoringsubjects=0x7f080039;
         public static final int et_tutoringtotime=0x7f080037;
-        public static final int et_userName=0x7f0800a9;
+        public static final int et_userName=0x7f0800b2;
         public static final int et_userRadius=0x7f08005a;
-        public static final int et_username=0x7f080084;
+        public static final int et_username=0x7f08008d;
         public static final int et_vendorRadius=0x7f08005c;
+        public static final int expandableView=0x7f080071;
         public static final int fragment_container=0x7f080058;
         public static final int futurePaymentBtn=0x7f080048;
         public static final int futurePaymentPurchaseBtn=0x7f080049;
@@ -799,125 +811,132 @@ containing a value of this type.
         public static final int holo_dark=0x7f080005;
         public static final int holo_light=0x7f080006;
         public static final int hybrid=0x7f080004;
-        public static final int ib_category=0x7f0800c3;
-        public static final int ib_createpost=0x7f080097;
+        public static final int ib_category=0x7f0800cc;
+        public static final int ib_createpost=0x7f0800a0;
         public static final int ib_roleIcon=0x7f080069;
-        public static final int ib_settings=0x7f080098;
+        public static final int ib_settings=0x7f0800a1;
         public static final int imageView1=0x7f080062;
         public static final int imageView2=0x7f080063;
         public static final int imageView3=0x7f080064;
         public static final int imageView4=0x7f080065;
-        public static final int img_profile=0x7f080077;
+        public static final int img_profile=0x7f080080;
+        public static final int ivArrow=0x7f08007e;
         public static final int ivProfile=0x7f08004b;
-        public static final int iv_loginlogo=0x7f080083;
-        public static final int iv_title=0x7f080082;
-        public static final int left_drawer=0x7f08009a;
-        public static final int linear=0x7f08008f;
-        public static final int listView=0x7f0800af;
-        public static final int listView1=0x7f0800c2;
+        public static final int iv_loginlogo=0x7f08008c;
+        public static final int iv_title=0x7f08008b;
+        public static final int lblListHeader=0x7f08007d;
+        public static final int left_drawer=0x7f0800a3;
+        public static final int linear=0x7f080098;
+        public static final int listView=0x7f0800b8;
+        public static final int listView1=0x7f0800cb;
         public static final int llDateAndTime=0x7f08001d;
         public static final int ll_child1=0x7f08003d;
         public static final int ll_child2=0x7f08003f;
+        public static final int ll_ur=0x7f08006e;
         public static final int lletDescription=0x7f080023;
         public static final int lletTitle=0x7f08001b;
         public static final int ltr=0x7f080014;
-        public static final int lvExp=0x7f080095;
+        public static final int lvExp=0x7f08009e;
         public static final int match_parent=0x7f08000c;
         public static final int monochrome=0x7f080013;
-        public static final int newpost=0x7f0800b2;
+        public static final int newpost=0x7f0800bb;
         public static final int none=0x7f080000;
         public static final int normal=0x7f080001;
         public static final int numhours=0x7f080043;
         public static final int numkids=0x7f080044;
         public static final int offers=0x7f080019;
-        public static final int one_day=0x7f0800ca;
-        public static final int one_hour=0x7f0800c8;
+        public static final int one_day=0x7f0800d3;
+        public static final int one_hour=0x7f0800d1;
         public static final int orangeBar=0x7f080021;
         public static final int pager=0x7f080059;
         public static final int placecancl=0x7f08001a;
         public static final int post=0x7f080045;
         public static final int production=0x7f080007;
-        public static final int profile=0x7f0800b1;
+        public static final int profile=0x7f0800ba;
         public static final int profileSharingBtn=0x7f08004a;
-        public static final int rating=0x7f080091;
+        public static final int rating=0x7f08009a;
         public static final int ratingBar1=0x7f080055;
-        public static final int ratingcount=0x7f080092;
+        public static final int ratingcount=0x7f08009b;
         public static final int rl=0x7f08005e;
-        public static final int rl_bottomLayout=0x7f080096;
-        public static final int rlview=0x7f080081;
+        public static final int rl_bottomLayout=0x7f08009f;
+        public static final int rl_top=0x7f08006d;
+        public static final int rlview=0x7f08008a;
         public static final int rtl=0x7f080015;
         public static final int sandbox=0x7f080008;
         public static final int satellite=0x7f080002;
-        public static final int section_label=0x7f080076;
+        public static final int section_label=0x7f08007f;
         public static final int selectionDetails=0x7f08000b;
-        public static final int separator=0x7f080079;
-        public static final int separator1=0x7f08007d;
-        public static final int separator2=0x7f08007f;
-        public static final int separator3=0x7f08007b;
-        public static final int servicell=0x7f0800a1;
-        public static final int settings=0x7f0800b3;
-        public static final int settingsListItem=0x7f0800a3;
-        public static final int seven_days=0x7f0800cc;
-        public static final int signUpBasicDetails_fragment=0x7f0800a5;
-        public static final int signUpRole_fragment=0x7f0800ad;
-        public static final int slideButton=0x7f0800b6;
-        public static final int slideButton2=0x7f0800b7;
-        public static final int slideButton3=0x7f0800b8;
-        public static final int spinner_role=0x7f0800ae;
+        public static final int separator=0x7f080082;
+        public static final int separator1=0x7f080086;
+        public static final int separator2=0x7f080088;
+        public static final int separator3=0x7f080084;
+        public static final int servicell=0x7f0800aa;
+        public static final int settings=0x7f0800bc;
+        public static final int settingsListItem=0x7f0800ac;
+        public static final int seven_days=0x7f0800d5;
+        public static final int signUpBasicDetails_fragment=0x7f0800ae;
+        public static final int signUpRole_fragment=0x7f0800b6;
+        public static final int slideButton=0x7f0800bf;
+        public static final int slideButton2=0x7f0800c0;
+        public static final int slideButton3=0x7f0800c1;
+        public static final int spinner_role=0x7f0800b7;
         public static final int strict_sandbox=0x7f080009;
-        public static final int tabbar=0x7f0800b0;
-        public static final int tabicon_accepted=0x7f0800ba;
-        public static final int tabicon_open=0x7f0800bc;
-        public static final int tabicon_serviced=0x7f0800be;
-        public static final int tabicon_settings=0x7f0800c0;
+        public static final int sv=0x7f08006c;
+        public static final int tabbar=0x7f0800b9;
+        public static final int tabicon_accepted=0x7f0800c3;
+        public static final int tabicon_open=0x7f0800c5;
+        public static final int tabicon_serviced=0x7f0800c7;
+        public static final int tabicon_settings=0x7f0800c9;
         public static final int tagsLayout=0x7f080022;
         public static final int terrain=0x7f080003;
-        public static final int three_days=0x7f0800cb;
+        public static final int three_days=0x7f0800d4;
         public static final int time=0x7f080041;
         public static final int timeleft=0x7f080018;
         public static final int tvBiddingEnds=0x7f08001f;
-        public static final int tvNewbids=0x7f08009f;
+        public static final int tvNewbids=0x7f0800a8;
         public static final int tvRate=0x7f080054;
         public static final int tvRequestDate=0x7f08001e;
         public static final int tvTags=0x7f080020;
         public static final int tv_Subjects=0x7f080038;
         public static final int tv_author=0x7f080027;
-        public static final int tv_bidamount=0x7f0800c5;
+        public static final int tv_bidamount=0x7f0800ce;
+        public static final int tv_bidtime=0x7f08007a;
         public static final int tv_cost=0x7f08002d;
         public static final int tv_cs_msg=0x7f08003c;
         public static final int tv_cs_pagetitle=0x7f08006a;
         public static final int tv_cs_send=0x7f08006b;
-        public static final int tv_date=0x7f08006c;
+        public static final int tv_date=0x7f08006f;
         public static final int tv_description=0x7f08002f;
         public static final int tv_edition=0x7f080029;
         public static final int tv_fromtime=0x7f080034;
-        public static final int tv_lowestbid=0x7f080073;
-        public static final int tv_nolistmessage=0x7f0800a2;
+        public static final int tv_lowestbid=0x7f080077;
+        public static final int tv_nolistmessage=0x7f0800ab;
         public static final int tv_request_subject=0x7f080068;
         public static final int tv_requestedon=0x7f08002b;
         public static final int tv_requeston=0x7f080032;
-        public static final int tv_servicedetails=0x7f0800c4;
-        public static final int tv_settingsitem=0x7f0800a4;
-        public static final int tv_tabIconAccepted=0x7f0800bb;
-        public static final int tv_tabIconOpen=0x7f0800bd;
-        public static final int tv_tabIconServiced=0x7f0800bf;
-        public static final int tv_tabiconsettings=0x7f0800c1;
-        public static final int tv_timeleft=0x7f080071;
+        public static final int tv_servicedetails=0x7f0800cd;
+        public static final int tv_settingsitem=0x7f0800ad;
+        public static final int tv_tabIconAccepted=0x7f0800c4;
+        public static final int tv_tabIconOpen=0x7f0800c6;
+        public static final int tv_tabIconServiced=0x7f0800c8;
+        public static final int tv_tabiconsettings=0x7f0800ca;
+        public static final int tv_timeleft=0x7f080075;
         public static final int tv_title=0x7f080025;
         public static final int tv_totime=0x7f080036;
-        public static final int tv_username=0x7f08006d;
+        public static final int tv_username=0x7f080070;
         public static final int tv_vendor_categorylist=0x7f080067;
-        public static final int tvdate=0x7f08009b;
+        public static final int tv_vendorbidamount=0x7f08007b;
+        public static final int tvdate=0x7f0800a4;
         public static final int tvfirstName=0x7f08004d;
         public static final int tvlastName=0x7f08004c;
-        public static final int tvleastbid=0x7f08009e;
-        public static final int tvtime=0x7f08009c;
-        public static final int tvtotalbids=0x7f08009d;
-        public static final int twelve_hours=0x7f0800c9;
+        public static final int tvleastbid=0x7f0800a7;
+        public static final int tvtime=0x7f0800a5;
+        public static final int tvtotalbids=0x7f0800a6;
+        public static final int twelve_hours=0x7f0800d2;
         public static final int username=0x7f080016;
-        public static final int v_ht=0x7f080086;
-        public static final int vendor_consumer=0x7f0800c7;
-        public static final int vpPager=0x7f0800b9;
+        public static final int v_ht=0x7f08008f;
+        public static final int vendor_consumer=0x7f0800d0;
+        public static final int vpPager=0x7f0800c2;
         public static final int wrap_content=0x7f08000d;
         public static final int wrapper=0x7f080046;
     }
@@ -952,33 +971,35 @@ containing a value of this type.
         public static final int custom_actionbar_for_customer_support=0x7f030018;
         public static final int custom_theme_tab_indicator_holo=0x7f030019;
         public static final int details=0x7f03001a;
-        public static final int drawer_list_item=0x7f03001b;
-        public static final int edittext_red=0x7f03001c;
-        public static final int fragment_requestor__home=0x7f03001d;
-        public static final int fragment_settings=0x7f03001e;
-        public static final int fragment_vendorbidslist=0x7f03001f;
-        public static final int login_bidkraft=0x7f030020;
-        public static final int new_post_homerepair=0x7f030021;
-        public static final int offersrow=0x7f030022;
-        public static final int payment=0x7f030023;
-        public static final int pendingacceptedexpandablelist=0x7f030024;
-        public static final int requestor_home=0x7f030025;
-        public static final int requestor_home_activity=0x7f030026;
-        public static final int requestrow=0x7f030027;
-        public static final int servicesist=0x7f030028;
-        public static final int settings=0x7f030029;
-        public static final int settingslistrow=0x7f03002a;
-        public static final int signup=0x7f03002b;
-        public static final int signuprole=0x7f03002c;
-        public static final int sliding_layout=0x7f03002d;
-        public static final int tabicon_acceptedrequests=0x7f03002e;
-        public static final int tabicon_openrequest=0x7f03002f;
-        public static final int tabicon_servicedrequests=0x7f030030;
-        public static final int tabicon_settings=0x7f030031;
-        public static final int user_requests_list=0x7f030032;
-        public static final int userhome=0x7f030033;
-        public static final int userlistitem=0x7f030034;
-        public static final int usertabfragmnet=0x7f030035;
+        public static final int detailsrow=0x7f03001b;
+        public static final int drawer_list_item=0x7f03001c;
+        public static final int edittext_red=0x7f03001d;
+        public static final int expandableview_header=0x7f03001e;
+        public static final int fragment_requestor__home=0x7f03001f;
+        public static final int fragment_settings=0x7f030020;
+        public static final int fragment_vendorbidslist=0x7f030021;
+        public static final int login_bidkraft=0x7f030022;
+        public static final int new_post_homerepair=0x7f030023;
+        public static final int offersrow=0x7f030024;
+        public static final int payment=0x7f030025;
+        public static final int pendingacceptedexpandablelist=0x7f030026;
+        public static final int requestor_home=0x7f030027;
+        public static final int requestor_home_activity=0x7f030028;
+        public static final int requestrow=0x7f030029;
+        public static final int servicesist=0x7f03002a;
+        public static final int settings=0x7f03002b;
+        public static final int settingslistrow=0x7f03002c;
+        public static final int signup=0x7f03002d;
+        public static final int signuprole=0x7f03002e;
+        public static final int sliding_layout=0x7f03002f;
+        public static final int tabicon_acceptedrequests=0x7f030030;
+        public static final int tabicon_openrequest=0x7f030031;
+        public static final int tabicon_servicedrequests=0x7f030032;
+        public static final int tabicon_settings=0x7f030033;
+        public static final int user_requests_list=0x7f030034;
+        public static final int userhome=0x7f030035;
+        public static final int userlistitem=0x7f030036;
+        public static final int usertabfragmnet=0x7f030037;
     }
     public static final class menu {
         public static final int create_job=0x7f0d0000;
@@ -1372,6 +1393,33 @@ containing a value of this type.
           @attr name com.babloosashi.neighbour:shadow
         */
         public static final int CircularImageView_shadow = 3;
+        /** Attributes that can be used with a ExpandableDropView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #ExpandableDropView_titleText com.babloosashi.neighbour:titleText}</code></td><td></td></tr>
+           </table>
+           @see #ExpandableDropView_titleText
+         */
+        public static final int[] ExpandableDropView = {
+            0x7f010025
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.babloosashi.neighbour.R.attr#titleText}
+          attribute's value can be found in the {@link #ExpandableDropView} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.babloosashi.neighbour:titleText
+        */
+        public static final int ExpandableDropView_titleText = 0;
         /** Attributes that can be used with a FlowLayout.
            <p>Includes the following attributes:</p>
            <table>
@@ -1391,8 +1439,8 @@ containing a value of this type.
            @see #FlowLayout_weightDefault
          */
         public static final int[] FlowLayout = {
-            0x010100af, 0x010100c4, 0x7f010025, 0x7f010026,
-            0x7f010027
+            0x010100af, 0x010100c4, 0x7f010026, 0x7f010027,
+            0x7f010028
         };
         /**
           <p>This symbol is the offset where the {@link android.R.attr#gravity}
@@ -1466,7 +1514,7 @@ containing a value of this type.
            @see #FlowLayout_LayoutParams_layout_weight
          */
         public static final int[] FlowLayout_LayoutParams = {
-            0x010100b3, 0x7f010028, 0x7f010029
+            0x010100b3, 0x7f010029, 0x7f01002a
         };
         /**
           <p>This symbol is the offset where the {@link android.R.attr#layout_gravity}
