@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="#BDC3C7"
+>
+    
+     <ScrollView
+        android:id="@+id/sv"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/LinearLayout"
+        android:layout_alignParentTop="true"
+        
+         > 
+  <RelativeLayout
+            android:layout_width= "match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rl_top"
+            > 
+            
+      <LinearLayout 
+          android:layout_width= "match_parent"
+          android:layout_height="wrap_content"
+          android:background="#BDC3C7"
+          android:orientation="horizontal"
+          android:weightSum="2"
+          android:id="@+id/ll_ur"
+          >
+            
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DAte : 2/3/15" >
+            </TextView>
+            
+            <TextView
+                  android:layout_weight="1"
+                android:id="@+id/tv_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" 
+                android:text=" username "
+                >
+            </TextView>
+            </LinearLayout>
+            
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_ur"
+                android:text ="The description of the request and extra extra goes here" 
+                android:inputType="textMultiLine"
+                
+                />
+           
+               <!--    <ListView
+              android:id="@android:id/list"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/tv_description"
+              android:background="#ECF0F1" 
+              >
+
+            </ListView> -->
+            <LinearLayout 
+                android:id="@+id/edLL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_below="@+id/tv_description"
+                android:layout_alignParentBottom="true">
+            <harish.custom.view.ExpandableDropView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/expandableView"></harish.custom.view.ExpandableDropView>
+                
+                </LinearLayout>
+            
+              <!--   <ListView 
+                      android:id="@android:id/list"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />  -->
+                
+            		
+            
+   </RelativeLayout> 
+    </ScrollView> 
+          
+     
+
+              
+  
+    <LinearLayout
+         android:id="@+id/LinearLayout" 
+        android:orientation="vertical"
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:gravity="bottom"
+        android:layout_alignParentBottom="true"
+        >
+        
+            <LinearLayout android:id="@+id/LinearLayout1" 
+        android:orientation="horizontal"
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:weightSum="2"
+        >
+        
+           <EditText
+               android:id="@+id/et_bidAmount"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:layout_above="@+id/tv_timeleft"
+               android:layout_alignParentLeft="true"
+               android:layout_alignParentStart="true"
+               android:background="@drawable/custom_theme_textfield_activated_holo_light"
+               android:hint="$0" />
+           
+           <Button
+               android:id="@+id/btn_bid"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:layout_above="@+id/tv_lowestbid"
+               android:layout_alignParentEnd="true"
+               android:layout_alignParentRight="true"
+               android:layout_toEndOf="@+id/et_bidAmount"
+               android:layout_toRightOf="@+id/et_bidAmount"
+               android:background="#F39C12"
+               android:text="Bid"
+               android:textColor="#fff"
+               android:textStyle="bold" />
+           </LinearLayout>
+           
+            <LinearLayout android:id="@+id/LinearLayout2" 
+        android:orientation="horizontal"
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:weightSum="2"
+        >
+    
+   <TextView  
+       android:id="@+id/tv_timeleft"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp" 
+        android:layout_weight="1"
+        android:layout_alignParentBottom="true"
+        android:background="#E74C3C"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="5:32 PM \n Time Left"
+        android:gravity="center"
+        android:textColor="#ECF0F1"
+        
+     />
+   
+   
+   <TextView 
+       android:layout_weight="1"
+       android:id = "@+id/tv_lowestbid"
+       android:layout_height="wrap_content"
+       android:layout_width="0dp" 
+       android:layout_toRightOf="@+id/tv_timeleft"
+       android:layout_toEndOf="@+id/tv_timeleft"
+       android:layout_alignParentBottom="true"
+       android:layout_alignParentRight="true"
+       android:layout_alignParentEnd="true"
+       android:text="$7.75/hr \n Lowest Bid"
+        android:gravity="center"
+        android:textColor="#ECF0F1"
+        android:background="#2ECC71"   
+       />
+
+ </LinearLayout>
+ </LinearLayout>
+
+
+</RelativeLayout>

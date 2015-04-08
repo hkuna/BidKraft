@@ -15,27 +15,31 @@ import push.classes.to.other.pkg.PlacedBidsDataStruct;
 import push.classes.to.other.pkg.Response;
 import server.ServerConnector;
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.drawable.ColorDrawable;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.babloosashi.neighbour.R;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
-public class AuctionDetails extends ListActivity implements
+public class AuctionDetails extends Activity implements
 		android.view.View.OnClickListener {
 
 	private TextView tvUserName, tvDescription, offers, timeLeft;
@@ -43,6 +47,7 @@ public class AuctionDetails extends ListActivity implements
 	private String tag = "AuctionDetails";
 	private Button placeBid_Or_CancelRequest;
 	private int onListItemClickedId;
+	ScrollView sv;
 	private VendorMainListAdapter mVendorMainListAdapter;
 	private UserMainListAdapter mUserMainListAdapter;
 
@@ -54,6 +59,9 @@ public class AuctionDetails extends ListActivity implements
 	ServerConnector mServerConnector;
 	String fromfragment;
 	String role;
+	ExpandableDropView ed;
+	ListView lv;
+	
 
 	@Override         
 	protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +79,8 @@ public class AuctionDetails extends ListActivity implements
 		LayoutInflater mInflater = LayoutInflater.from(this);
 		View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
 		TextView mRequestTitle = (TextView) mCustomView.findViewById(R.id.tv_request_subject);
+		
+		
 		ImageButton ib_roleicon = (ImageButton) mCustomView
 				.findViewById(R.id.ib_roleIcon);
 		
@@ -88,6 +98,47 @@ public class AuctionDetails extends ListActivity implements
 		bar.setCustomView(mCustomView);
 		bar.setDisplayShowCustomEnabled(true);
 		
+		/*ed = (ExpandableDropView) findViewById(R.id.expandableView);
+		sv = (ScrollView) findViewById(R.id.sv);
+		*/
+//		LayoutInflater inflater = (LayoutInflater) this
+//		        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//
+//		    View rowView = inflater.inflate(R.layout.settings, null, false);
+//		
+//		lv = (ListView) rowView.findViewById(android.R.id.list);
+		
+		
+		LinearLayout featuresLL = new LinearLayout(this);
+		   featuresLL.setOrientation(LinearLayout.VERTICAL);
+		   featuresLL.setBackgroundColor(Color.WHITE);
+		   
+		   for(int i = 0; i < 100; i++)
+		   {
+		   
+		LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		   View vi = inflater.inflate(R.layout.detailsrow, null);
+		TextView tvLbl = (TextView) vi.findViewById(R.id.biduser);
+		tvLbl.setText("hitmonji " +i );
+		   
+		 
+		   
+		featuresLL.addView(vi, i);
+		   }
+		   ed = (ExpandableDropView) findViewById(R.id.expandableView);
+			sv = (ScrollView) findViewById(R.id.sv);
+			ed.setChildView(featuresLL, sv);
+	/*	
+	LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
+		ListView modeList = new ListView(this);
+		modeList.setLayoutParams(params);
+		
+		
+		String[] stringArray = new String[] { "Bright Mode", "Normal Mode" };
+		ArrayAdapter<String> modeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, stringArray);
+		modeList.setAdapter(modeAdapter);
+		
+		ed.setChildView(modeList, sv);*/
 		// end of custom action bar setting
 		
 
@@ -99,10 +150,10 @@ public class AuctionDetails extends ListActivity implements
 		placeBid_Or_CancelRequest.setOnClickListener(this);
 		// checking if the control came from user side or vendor side to display
 		// cancel or place bid based on it
-
+*/
 		if (extras != null) {
-			onListItemClickedId = (int) extras.getLong("position");
-			fromfragment = extras.getString("fromfragment");
+/*			onListItemClickedId = (int) extras.getLong("position");
+			
 			role = extras.getString("role");
 			placeBid_Or_CancelRequest.setOnClickListener(this);
 			
@@ -160,42 +211,43 @@ public class AuctionDetails extends ListActivity implements
 				}
 				// else if () for vendor [placed bids , disable placed bid
 				// button
-			}
+			}*/
 			
 			// user auction page
 			
-			else {           
-				onListItemClickedId = (int) extras.getLong("position");
-				Log.d(tag, "clicked id " + onListItemClickedId);
-		
-				mUserMainListAdapter = new UserMainListAdapter(
-						AuctionDetails.this, fromfragment, "auction",
-						onListItemClickedId);
+		/*	else { */          
+//			fromfragment = extras.getString("fromfragment");
+//				onListItemClickedId = (int) extras.getLong("position");
+//				Log.d(tag, "clicked id " + onListItemClickedId);
+//		
+//				mUserMainListAdapter = new UserMainListAdapter(
+//						AuctionDetails.this, fromfragment, "auction",
+//						onListItemClickedId);
+//
+//				Log.d(tag, "reached else part");
+//				switch (getFromFragment(fromfragment)) {
+//				case 1:
+//					//placeBid_Or_CancelRequest.setVisibility(View.GONE);
+//					
+//					
+//					Requestor_Json_Data_Structure ob = CommonData
+//							.getOpenRequestsData().get(onListItemClickedId);
+//					/*tvDescription.setText("Description : "+ob.getDescription());
+//					tvUserName.setText("UserName : "+CommonData.getUserId());
+//					timeLeft.setText("Request Start Date : "+ob.getRequestStartTime());*/
+//					
+//					if (ob.getBids().size() != 0) {
+//						//getListView().setVisibility(View.VISIBLE);
+//						lv.setAdapter(mUserMainListAdapter);ed.setChildView(lv, sv);
+//					} else
+//						
+//						{//getListView().setVisibility(View.GONE);
+//						//offers.setText("No offers");
+//						}
+//
+//					break;
 
-				Log.d(tag, "reached else part");
-				switch (getFromFragment(fromfragment)) {
-				case 1:
-					placeBid_Or_CancelRequest.setVisibility(View.GONE);
-					
-					
-					Requestor_Json_Data_Structure ob = CommonData
-							.getOpenRequestsData().get(onListItemClickedId);
-					tvDescription.setText("Description : "+ob.getDescription());
-					tvUserName.setText("UserName : "+CommonData.getUserId());
-					timeLeft.setText("Request Start Date : "+ob.getRequestStartTime());
-					
-					if (ob.getBids().size() != 0) {
-						getListView().setVisibility(View.VISIBLE);
-						setListAdapter(mUserMainListAdapter);
-					} else
-						
-						{getListView().setVisibility(View.GONE);
-						offers.setText("No offers");
-						}
-
-					break;
-
-				case 2:
+			/*	case 2:
 					placeBid_Or_CancelRequest.setVisibility(View.GONE);
 					Requestor_Json_Data_Structure ob_acp  = CommonData
 							.getAcceptedRequestsData().get(onListItemClickedId);
@@ -229,11 +281,11 @@ public class AuctionDetails extends ListActivity implements
 						offers.setText("No Serviced Requests");
 					}
 					break;
-				}
+				}*/
 
-			}
+			//}
 
-		}*/
+		}
 
 	}
 

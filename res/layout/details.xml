@@ -13,6 +13,9 @@
         android:layout_marginRight="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/LinearLayout"
+        android:layout_alignParentTop="true"
+        android:background="#BDC3C7"
         
          > 
   <RelativeLayout
@@ -67,15 +70,26 @@
               >
 
             </ListView> -->
-            
+            <LinearLayout 
+                android:id="@+id/edLL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_below="@+id/tv_description"
+                android:layout_alignParentBottom="true">
             <harish.custom.view.ExpandableDropView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/expandableView"
-                android:layout_below="@+id/tv_description">
-            
+                android:layout_height="wrap_content"
+                android:id="@+id/expandableView"></harish.custom.view.ExpandableDropView>
                 
-            		</harish.custom.view.ExpandableDropView>
+                </LinearLayout>
+            
+              <!--   <ListView 
+                      android:id="@android:id/list"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />  -->
+                
+            		
             
    </RelativeLayout> 
     </ScrollView> 
@@ -90,7 +104,7 @@
         android:layout_width="match_parent" 
         android:layout_height="wrap_content" 
         android:gravity="bottom"
-        android:layout_below="@+id/sv"
+        android:layout_marginTop="20dp"
         android:layout_alignParentBottom="true"
         >
         

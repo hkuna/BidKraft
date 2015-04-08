@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -75,6 +76,9 @@ public class ExpandableDropView extends RelativeLayout implements OnClickListene
     {
     	this.child = child;
     	this.scrollParent = scrollParent;
+    	LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
+    	scrollParent.setLayoutParams(params);
+    	child.setLayoutParams(params);
     	child.setVisibility(View.GONE);
     	child.setPadding(0, 0, 0, BOTTOM_PADDING);
     	
