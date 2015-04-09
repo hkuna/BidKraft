@@ -1,9 +1,8 @@
 package harish.requestor.role;
 
-import push.classes.to.other.pkg.VendorPreferences;
 import harish.listadapter.uservendor.SettingsListAdapter;
+import push.classes.to.other.pkg.VendorPreferences;
 import remove.classes.from.the.pkg.CustomerSupport;
-import remove.classes.from.the.pkg.Profile_Activity;
 import server.ServerConnector;
 import android.content.Intent;
 import android.os.Bundle;
@@ -66,7 +65,7 @@ String Tag ="Settings";
 		switch(position)
 		{
 		case 0:
-			Intent i = new Intent(getActivity(),Profile_Activity.class);
+			Intent i = new Intent(getActivity(),ProfileActivity.class);
 			startActivity(i);
 			break;
 			

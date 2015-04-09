@@ -5,6 +5,7 @@ import push.classes.to.other.pkg.VendorPreferences;
 import com.babloosashi.neighbour.R;
 
 import harish.listadapter.uservendor.SettingsListAdapter;
+import harish.requestor.role.ProfileActivity;
 import harish.requestor.role.UserPreferences;
 import server.ServerConnector;
 import android.app.Activity;
@@ -58,7 +59,7 @@ public class SettingsActivity extends Activity {
 		switch(position)
 		{
 		case 0:
-			Intent i = new Intent(this,Profile_Activity.class);
+			Intent i = new Intent(this,ProfileActivity.class);
 			startActivity(i);
 			break;
 			

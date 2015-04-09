@@ -28,6 +28,11 @@
     <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
 
     <!--  -->
+    
+     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true" />
 
 
     <!-- new permissions are added here for GCM -->
@@ -181,6 +186,11 @@
             android:name="remove.classes.from.the.pkg.CreateJobActivity"
             android:label="@string/title_activity_create_job" >
         </activity>
+        <activity
+            android:name="harish.requestor.role.ProfileActivity"
+            android:label="@string/title_activity_profile" >
+        </activity>
     </application>
+   
 
 </manifest>
