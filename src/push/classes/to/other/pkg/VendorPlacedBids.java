@@ -108,6 +108,7 @@ public class VendorPlacedBids extends ListFragment  {
 					from_current_requests_to_request_bids.putExtra("fromfragment", CommonData.placedBidsFragment);
 					from_current_requests_to_request_bids.putExtra("role",
 							"vendor");
+					from_current_requests_to_request_bids.putExtra("FromFragment",CommonData.PlacedBidsFragment);
 					Log.d(Tag, "position is" + id);
 
 					startActivity(from_current_requests_to_request_bids);

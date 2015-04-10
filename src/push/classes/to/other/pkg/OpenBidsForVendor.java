@@ -92,6 +92,7 @@ public class OpenBidsForVendor extends ListFragment {
 					from_current_requests_to_request_bids.putExtra("role",
 							"vendor");
 					Log.d(Tag, "position is" + id);
+					from_current_requests_to_request_bids.putExtra("FromFragment",CommonData.OpenBidsFragment);
 
 					startActivity(from_current_requests_to_request_bids);
 				}
