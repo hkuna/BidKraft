@@ -3,41 +3,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:weightSum="3">    
+    android:weightSum="3.5">    
     
     
     
     <TextView 
-        android:id="@+id/biduser"
+        android:id="@+id/tv_biduser"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="CoolMan126"
         android:gravity="center"
+        android:textSize="14sp"
         />
     
     
      <TextView 
-         android:id="@+id/tv_bidtime"
+         android:id="@+id/tv_biddingtime"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="5.32m"
         android:gravity="center"
+                android:textSize="14sp"
         />
      
      <TextView 
          
-           android:id="@+id/tv_vendorbidamount"
+           android:id="@+id/tv_vendorbidvalue"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="$7.75.hr"
         android:gravity="center"
+                android:textSize="14sp"
          
          
          />
     
+     <CheckBox 
+         android:id="@+id/cb_accept"
+         android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".5"
+          android:gravity="center"
+         />
     
 
 </LinearLayout>

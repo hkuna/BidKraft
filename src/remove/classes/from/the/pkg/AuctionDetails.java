@@ -29,6 +29,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -40,12 +41,12 @@ import com.babloosashi.neighbour.R;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
 public class AuctionDetails extends Activity implements
-		android.view.View.OnClickListener {
+android.view.View.OnClickListener  {
 
-	private TextView tvUserName, tvDescription, offers, timeLeft;
+
 
 	private String tag = "AuctionDetails";
-	private Button placeBid_Or_CancelRequest;
+
 	private int onListItemClickedId;
 	ScrollView sv;
 	private VendorMainListAdapter mVendorMainListAdapter;
@@ -60,8 +61,14 @@ public class AuctionDetails extends Activity implements
 	String fromfragment;
 	String role;
 	ExpandableDropView ed;
-	ListView lv;
-	
+	ListView lv;	
+	View rowvi ;
+	TextView tv_date , tv_username ,tv_description , tv_biduser , tv_bidtime , tv_bidamount, tv_timeleft, tv_lowestbid, tv_vendorbidamount;
+	Button btn_bid;
+	CheckBox cb_accept_or_complete;
+	EditText et_bidValue;
+	int whichFragment=11;
+	LinearLayout llForBidderslist;
 
 	@Override         
 	protected void onCreate(Bundle savedInstanceState) {
@@ -69,225 +76,25 @@ public class AuctionDetails extends Activity implements
 		setContentView(R.layout.details);
 		extras = getIntent().getExtras();
 		mServerConnector = new ServerConnector(this);
-		
-		
-		
+
 		//setting the custom bar
-		ActionBar bar = getActionBar();
-		bar.setDisplayShowHomeEnabled(false);
-		bar.setDisplayShowTitleEnabled(false);
-		LayoutInflater mInflater = LayoutInflater.from(this);
-		View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
-		TextView mRequestTitle = (TextView) mCustomView.findViewById(R.id.tv_request_subject);
-		
-		
-		ImageButton ib_roleicon = (ImageButton) mCustomView
-				.findViewById(R.id.ib_roleIcon);
-		
-		ib_roleicon.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
-				//handle the role icon action
-			}
-		});
-		
-		
-		bar.setCustomView(mCustomView);
-		bar.setDisplayShowCustomEnabled(true);
-		
-		/*ed = (ExpandableDropView) findViewById(R.id.expandableView);
-		sv = (ScrollView) findViewById(R.id.sv);
-		*/
-//		LayoutInflater inflater = (LayoutInflater) this
-//		        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//
-//		    View rowView = inflater.inflate(R.layout.settings, null, false);
-//		
-//		lv = (ListView) rowView.findViewById(android.R.id.list);
-		
-		
-		LinearLayout featuresLL = new LinearLayout(this);
-		   featuresLL.setOrientation(LinearLayout.VERTICAL);
-		   featuresLL.setBackgroundColor(Color.WHITE);
-		   
-		   for(int i = 0; i < 100; i++)
-		   {
-		   
-		LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		   View vi = inflater.inflate(R.layout.detailsrow, null);
-		TextView tvLbl = (TextView) vi.findViewById(R.id.biduser);
-		tvLbl.setText("hitmonji " +i );
-		   
-		 
-		   
-		featuresLL.addView(vi, i);
-		   }
-		   ed = (ExpandableDropView) findViewById(R.id.expandableView);
-			sv = (ScrollView) findViewById(R.id.sv);
-			ed.setChildView(featuresLL, sv);
-	/*	
-	LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
-		ListView modeList = new ListView(this);
-		modeList.setLayoutParams(params);
-		
-		
-		String[] stringArray = new String[] { "Bright Mode", "Normal Mode" };
-		ArrayAdapter<String> modeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, stringArray);
-		modeList.setAdapter(modeAdapter);
-		
-		ed.setChildView(modeList, sv);*/
-		// end of custom action bar setting
-		
+		setCustomActionBar();
 
-	/*	placeBid_Or_CancelRequest = (Button) findViewById(R.id.placecancl);
-		tvDescription = (TextView) findViewById(R.id.description);
-		timeLeft = (TextView) findViewById(R.id.timeleft);
-		offers = (TextView) findViewById(R.id.offers);
-		tvUserName = (TextView) findViewById(R.id.username);
-		placeBid_Or_CancelRequest.setOnClickListener(this);
-		// checking if the control came from user side or vendor side to display
-		// cancel or place bid based on it
-*/
-		if (extras != null) {
-/*			onListItemClickedId = (int) extras.getLong("position");
-			
-			role = extras.getString("role");
-			placeBid_Or_CancelRequest.setOnClickListener(this);
-			
-			if (role.equalsIgnoreCase("vendor")) {
-				
-				if (fromfragment.equalsIgnoreCase(
-						CommonData.openBidsForVendorFragment))    // open bids
-				{
-					tvDescription.setText("Description : "+CommonData.getOpenBidsData().get(onListItemClickedId).getDescription());
-					tvUserName.setText("UserName : "+CommonData.getUserId());
-					timeLeft.setText("Request Start Date : "+CommonData.getOpenBidsData().get(onListItemClickedId).getRequestStartTime());
-					
-					placeBid_Or_CancelRequest.setText("Place Bid");
-					Log.d(tag, "reached open bid control inside auctions page");
 
-					if(CommonData.getOpenBidsData().get(onListItemClickedId).getBids().size()!=0)
-					{
-						getListView().setVisibility(View.VISIBLE);
-					mVendorMainListAdapter = new VendorMainListAdapter(
-							AuctionDetails.this,
-							fromfragment, "auction",
-							onListItemClickedId);
-					setListAdapter(mVendorMainListAdapter);
-					}
-					else
-					{getListView().setVisibility(View.GONE);
-					offers.setText("No offers");
-					}
-					
+		tv_date = (TextView) findViewById(R.id.tv_date);
+		tv_username = (TextView) findViewById(R.id.tv_username);
+		tv_description =(TextView) findViewById(R.id.tv_description);
+		tv_lowestbid =(TextView) findViewById(R.id.tv_lowestbid);
+		tv_timeleft = (TextView) findViewById(R.id.tv_timeleft);
+		btn_bid = (Button) findViewById(R.id.btn_bid);
+		btn_bid.setOnClickListener(this);
+		et_bidValue = (EditText) findViewById(R.id.et_bidAmount);
+		preRequistesForPopulatingData();
 
-				}
-				
-				else
-				{
-					placeBid_Or_CancelRequest.setVisibility(View.GONE);
-					Log.d(tag, "reached placed bid control inside auctions page");
-					tvDescription.setText("Description : "+CommonData.getPlacedBidsData().get(onListItemClickedId).getDescription());
-					tvUserName.setText("UserName : "+CommonData.getUserId());
-					timeLeft.setText("Request Start Date : "+CommonData.getPlacedBidsData().get(onListItemClickedId).getRequestStartTime());
-					
-					if(CommonData.getPlacedBidsData().get(onListItemClickedId).getBids().size()!=0)
-					{
-						getListView().setVisibility(View.VISIBLE);
-					mVendorMainListAdapter = new VendorMainListAdapter(
-							AuctionDetails.this,
-							fromfragment, "auction",
-							onListItemClickedId);
-					setListAdapter(mVendorMainListAdapter);
-					}
-					else
-					{getListView().setVisibility(View.GONE);
-					offers.setText("No offers");
-					}
-					
-				}
-				// else if () for vendor [placed bids , disable placed bid
-				// button
-			}*/
-			
-			// user auction page
-			
-		/*	else { */          
-//			fromfragment = extras.getString("fromfragment");
-//				onListItemClickedId = (int) extras.getLong("position");
-//				Log.d(tag, "clicked id " + onListItemClickedId);
-//		
-//				mUserMainListAdapter = new UserMainListAdapter(
-//						AuctionDetails.this, fromfragment, "auction",
-//						onListItemClickedId);
-//
-//				Log.d(tag, "reached else part");
-//				switch (getFromFragment(fromfragment)) {
-//				case 1:
-//					//placeBid_Or_CancelRequest.setVisibility(View.GONE);
-//					
-//					
-//					Requestor_Json_Data_Structure ob = CommonData
-//							.getOpenRequestsData().get(onListItemClickedId);
-//					/*tvDescription.setText("Description : "+ob.getDescription());
-//					tvUserName.setText("UserName : "+CommonData.getUserId());
-//					timeLeft.setText("Request Start Date : "+ob.getRequestStartTime());*/
-//					
-//					if (ob.getBids().size() != 0) {
-//						//getListView().setVisibility(View.VISIBLE);
-//						lv.setAdapter(mUserMainListAdapter);ed.setChildView(lv, sv);
-//					} else
-//						
-//						{//getListView().setVisibility(View.GONE);
-//						//offers.setText("No offers");
-//						}
-//
-//					break;
-
-			/*	case 2:
-					placeBid_Or_CancelRequest.setVisibility(View.GONE);
-					Requestor_Json_Data_Structure ob_acp  = CommonData
-							.getAcceptedRequestsData().get(onListItemClickedId);
-					tvDescription.setText("Description : "+ob_acp.getDescription());
-					tvUserName.setText("UserName : "+CommonData.getUserId());
-					timeLeft.setText("Request Start Date : "+ob_acp.getRequestStartTime());
-					if (ob_acp.getBids().size() != 0) {
-						getListView().setVisibility(View.VISIBLE);
-						setListAdapter(mUserMainListAdapter);
-					} else
-					{
-						getListView().setVisibility(View.GONE);
-						offers.setText("No offers");
-					}
-
-					break;
-
-				case 3:
-					placeBid_Or_CancelRequest.setVisibility(View.GONE);
-					Requestor_Json_Data_Structure ob_serv_req_data  = CommonData
-							.getServicedRequestsData().get(onListItemClickedId);
-					tvDescription.setText("Description : "+ob_serv_req_data.getDescription());
-					tvUserName.setText("UserName : "+CommonData.getUserId());
-					timeLeft.setText("Request Start Date : "+ob_serv_req_data.getRequestStartTime());
-					if (ob_serv_req_data.getBids().size() != 0) {
-						getListView().setVisibility(View.VISIBLE);
-						setListAdapter(mUserMainListAdapter);
-					} else
-					{
-						getListView().setVisibility(View.GONE);
-						offers.setText("No Serviced Requests");
-					}
-					break;
-				}*/
-
-			//}
 
 		}
 
-	}
+
 
 	private void getBidAmount() {
 		AlertDialog.Builder alert = new AlertDialog.Builder(AuctionDetails.this);
@@ -303,122 +110,105 @@ public class AuctionDetails extends Activity implements
 		alert.setPositiveButton("Yes",
 				new android.content.DialogInterface.OnClickListener() {
 
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						// TODO Auto-generated method stub
-						final ProgressDialog progress = CommonData
-								.showProgressBar(AuctionDetails.this);
-						progress.show();
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				final ProgressDialog progress = CommonData
+						.showProgressBar(AuctionDetails.this);
+				progress.show();
 
-						mServerConnector.placeBid(
-								CommonData.getOpenBidsData().get(onListItemClickedId)
-										.getRequestId(),
-								CommonData.getUserId(), input.getText()
-										.toString(),
-								new AsyncHttpResponseHandler() {
+				mServerConnector.placeBid(
+						CommonData.getOpenBidsData().get(onListItemClickedId)
+						.getRequestId(),
+						CommonData.getUserId(), input.getText()
+						.toString(),
+						new AsyncHttpResponseHandler() {
 
-									@Override
-									public void onSuccess(int statusCode,
-											Header[] headers,
-											byte[] responseBody) {
-										// TODO Auto-generated method stub
+							@Override
+							public void onSuccess(int statusCode,
+									Header[] headers,
+									byte[] responseBody) {
+								// TODO Auto-generated method stub
 
-										Response response = CommonData
-												.convertGSonObjectToResponseClass(responseBody);
+								Response response = CommonData
+										.convertGSonObjectToResponseClass(responseBody);
 
-										// after succesfully placing bid , the
-										// bid should be moved from open bids to
-										// placed bids , but cannot be moved
-										// because the structure is different
+								// after succesfully placing bid , the
+								// bid should be moved from open bids to
+								// placed bids , but cannot be moved
+								// because the structure is different
 
-										if (response.getStatus()
-												.equalsIgnoreCase("success")) {
+								if (response.getStatus()
+										.equalsIgnoreCase("success")) {
 
-											// CommonData.vendorPlacedBidsData.add(CommonData.vendorOpenBidsData.get(onListItemClickedId).getBids());
-											
-											
-												CommonData.setOpenBidsData(response.getData().getOpenBids());
-									
-												CommonData.setPlacedBidsData(response.getData().getPlacedBids());
-											
-											Log.d(tag,"bid placed response for open bids" +response.getData().getOpenBids() );
-											
-											Log.d(tag," bid placed response for placed bids"+response.getData().getPlacedBids());
+									// CommonData.vendorPlacedBidsData.add(CommonData.vendorOpenBidsData.get(onListItemClickedId).getBids());
 
-											finish();
-										}
 
-									}
+									CommonData.setOpenBidsData(response.getData().getOpenBids());
 
-									@Override
-									public void onFailure(int statusCode,
-											Header[] headers,
-											byte[] responseBody, Throwable error) {
-										// TODO Auto-generated method stub
+									CommonData.setPlacedBidsData(response.getData().getPlacedBids());
 
-									}
-								});
-						CommonData.hideProgressbar(AuctionDetails.this,
-								progress);
-					}
-				});
+									Log.d(tag,"bid placed response for open bids" +response.getData().getOpenBids() );
+
+									Log.d(tag," bid placed response for placed bids"+response.getData().getPlacedBids());
+
+									finish();
+								}
+
+							}
+
+							@Override
+							public void onFailure(int statusCode,
+									Header[] headers,
+									byte[] responseBody, Throwable error) {
+								// TODO Auto-generated method stub
+
+							}
+						});
+				CommonData.hideProgressbar(AuctionDetails.this,
+						progress);
+			}
+		});
 
 		alert.setNegativeButton("CANCEL",
 				new android.content.DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						// TODO Auto-generated method stub
-						dialog.dismiss();
-					}
-				});
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				dialog.dismiss();
+			}
+		});
 
 		alert.show();
 
 	}
 
-	@Override
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		if (role.equalsIgnoreCase("vendor")) {
 
-			// pop up a dialog box to take input for bidAmount
-			getBidAmount();
-
-		}
-		/*else
-		{
-			if(fromfragment.equalsIgnoreCase("User_Current_Requests"))
-				deleteRequest();
-		}*/
-
-	//	
-
-	}
 
 	/*private void deleteRequest() {
-		// TODO Auto-generated method stub
-		mServerConnector.deleteRequest(Integer.valueOf(CommonData.getOpenRequestsData().get(onListItemClickedId).getRequestId()), new AsyncHttpResponseHandler() {
-			
-			@Override
-			public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-	Response response =		 CommonData.convertGSonObjectToResponseClass(responseBody);
-			 if(response.getStatus().equalsIgnoreCase("success"))
-			 {
-				 CommonData.setOpenRequestsData(response.getData().getOpenRequests());
-				 finish();
-			 }
-				
-			}
-			
-			@Override
-			public void onFailure(int statusCode, Header[] headers,
-					byte[] responseBody, Throwable error) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
+	// TODO Auto-generated method stub
+	mServerConnector.deleteRequest(Integer.valueOf(CommonData.getOpenRequestsData().get(onListItemClickedId).getRequestId()), new AsyncHttpResponseHandler() {
 
-	}*/
+		@Override
+		public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+Response response =		 CommonData.convertGSonObjectToResponseClass(responseBody);
+		 if(response.getStatus().equalsIgnoreCase("success"))
+		 {
+			 CommonData.setOpenRequestsData(response.getData().getOpenRequests());
+			 finish();
+		 }
+
+		}
+
+		@Override
+		public void onFailure(int statusCode, Header[] headers,
+				byte[] responseBody, Throwable error) {
+			// TODO Auto-generated method stub
+
+		}
+	});
+
+}*/
 
 	private int getFromFragment(String fromfragment) {
 
@@ -428,6 +218,161 @@ public class AuctionDetails extends Activity implements
 			return 2;
 		} else { // servicedFragment
 			return 3;
+
+		}
+
+	}
+
+	private void  preRequistesForPopulatingData()
+	{
+		if (extras != null) {
+			onListItemClickedId = (int) extras.getLong("position");
+            whichFragment =(int) extras.getInt("FromFragment");
+			role = extras.getString("role");
+			btn_bid.setOnClickListener(AuctionDetails.this);
+			
+				populateDataOnUi(getDataForFragment());
+		
+			
+		}
+
+	}
+
+	private void populateDataOnUi(Requestor_Json_Data_Structure temp) {
+
+		tv_username.setText(CommonData.getUserId());
+		tv_date.setText(temp.getRequestStartDate());
+		tv_description.setText(temp.getDescription());
+		
+		if(whichFragment< 44)
+		{
+		  	handleUiElementsForUserView();
+		}
+		
+		drawListViewUnderScrollViewForDisplayingBidDetails(temp);
+		
+	}
+
+	private void handleUiElementsForUserView() {
+      
+		btn_bid.setVisibility(View.GONE);
+		et_bidValue.setVisibility(View.GONE);
+		
+		
+	}
+
+	private void drawListViewUnderScrollViewForDisplayingBidDetails(Requestor_Json_Data_Structure temp)
+
+	{
+
+		llForBidderslist = new LinearLayout(this);
+		llForBidderslist.setOrientation(LinearLayout.VERTICAL);
+		llForBidderslist.setBackgroundColor(Color.rgb(236, 240, 241));
+
+		LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		rowvi = inflater.inflate(R.layout.detailsrow, null);
+		tv_biduser = (TextView) rowvi.findViewById(R.id.tv_biduser);
+		tv_bidtime = (TextView) rowvi.findViewById(R.id.tv_biddingtime);
+		tv_vendorbidamount = (TextView) rowvi.findViewById(R.id.tv_vendorbidvalue);
+		cb_accept_or_complete = (CheckBox) rowvi.findViewById(R.id.cb_accept);
+		cb_accept_or_complete.setOnClickListener(this);
+		
+		if(temp.getBids().size()!=0)
+		addRowDataForListViewInEachFragment(rowvi, temp);
+        
+		
+
+
+	}
+
+	private Requestor_Json_Data_Structure getDataForFragment()
+	{
+		Requestor_Json_Data_Structure temp =null;
+		switch(whichFragment)
+		{
+		case 11: 
+			temp = CommonData.getOpenRequestsData().get(onListItemClickedId);
+		break;
+		case 22:  
+			temp = CommonData.getAcceptedRequestsData().get(onListItemClickedId);
+		break;
+		case 33:
+			temp = CommonData.getServicedRequestsData().get(onListItemClickedId);
+			break;
+		case 44:
+			temp = CommonData.getOpenBidsData().get(onListItemClickedId);
+			break;
+		case 55:	
+			temp = CommonData.getPlacedBidsData().get(onListItemClickedId);
+			break;
+		case 66:
+			break;
+
+		}
+
+		return temp;
+
+		
+	}
+
+	private void addRowDataForListViewInEachFragment(View rowvi , Requestor_Json_Data_Structure temp) {
+		for(int i=0 ; i< temp.getBids().size(); i++)
+		{
+			tv_biduser.setText(temp.getBids().get(i).getOffererName());
+			tv_bidtime.setText("5:32 m");
+			tv_vendorbidamount.setText(temp.getBids().get(i).getBidAmount());
+			// here set the data 	
+			llForBidderslist.addView(rowvi, i);
+			
+		}
+
+		ed = (ExpandableDropView) findViewById(R.id.expandableView);
+		sv = (ScrollView) findViewById(R.id.sv);
+		ed.setChildView(llForBidderslist, sv); // adding view with data
+
+
+	}
+
+	
+	private void setCustomActionBar()
+	{
+		ActionBar bar = getActionBar();
+		bar.setDisplayShowHomeEnabled(false);
+		bar.setDisplayShowTitleEnabled(false);
+		LayoutInflater mInflater = LayoutInflater.from(this);
+		View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
+		TextView mRequestTitle = (TextView) mCustomView.findViewById(R.id.tv_request_subject);
+
+
+		ImageButton ib_roleicon = (ImageButton) mCustomView
+				.findViewById(R.id.ib_roleIcon);
+
+		ib_roleicon.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+
+				//handle the role icon action
+			}
+		});
+
+
+		bar.setCustomView(mCustomView);
+		bar.setDisplayShowCustomEnabled(true);
+
+	}
+
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		switch(v.getId()) {
+
+		case R.id.btn_bid: 
+			getBidAmount();
+			break;
+
+
 
 		}
 

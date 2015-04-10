@@ -82,6 +82,7 @@ serviced_list.setOnItemClickListener(new OnItemClickListener() {
 				"ServicedRequests");
 		from_current_requests_to_request_bids.putExtra("role", "User");
 		Log.d(Tag, "position is" + id);
+		from_current_requests_to_request_bids.putExtra("FromFragment",CommonData.CompletedRequestsFragment);
 
 		startActivity(from_current_requests_to_request_bids);
 	}

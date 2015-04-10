@@ -40,6 +40,8 @@ public class CommonData {
 	public static final int ROLE_ID_USER = 1;
 	public static final int ROLE_ID_VENDOR = 2;
 	
+	public static final int OpenRequestFragment= 11 , AcceptedRequestsFragment = 22, CompletedRequestsFragment =33 , OpenBidsFragment =44 , PlacedBidsFragment =55 , BidsWonFragment=66;
+	
 	public static final String [] requestStatuses = {"OPEN", "BID_ACCEPT", "SERVICED", "CANCELLED", "CLOSED"};
 	public static void setSignUpflag(boolean signUpflag) {
 		CommonData.signUpflag = signUpflag;

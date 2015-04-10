@@ -1,7 +1,5 @@
 package harish.custom.view;
 
-import com.babloosashi.neighbour.R;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -11,12 +9,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.babloosashi.neighbour.R;
 
 public class ExpandableDropView extends RelativeLayout implements OnClickListener{
 
@@ -48,7 +47,7 @@ public class ExpandableDropView extends RelativeLayout implements OnClickListene
         TextView title = (TextView) vi.findViewById(R.id.lblListHeader);
       //  title.setText("titleText");
         
-        setBackgroundColor(Color.WHITE);
+        setBackgroundColor(Color.rgb(236, 240, 241));
         
         setClickable(true);
     }
@@ -78,6 +77,8 @@ public class ExpandableDropView extends RelativeLayout implements OnClickListene
     	this.scrollParent = scrollParent;
     	LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
     	scrollParent.setLayoutParams(params);
+    	scrollParent.setPadding(10, 5, 10, 5);
+    	params.setMargins(10, 0, 10, 20);
     	child.setLayoutParams(params);
     	child.setVisibility(View.GONE);
     	child.setPadding(0, 0, 0, BOTTOM_PADDING);
