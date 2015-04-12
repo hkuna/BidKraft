@@ -445,6 +445,12 @@ public class Login_Activity extends FragmentActivity {
 							Log.d(TAG,
 									"reading response value login"
 											+ CommonData.getToken() + CommonData.getUserId());
+							
+							Log.d(TAG,
+									"reading response value login"
+											+ responseBody);
+							
+							
 						//	CommonData.setRoleId(response.getData().getRoleId());
 							
 							

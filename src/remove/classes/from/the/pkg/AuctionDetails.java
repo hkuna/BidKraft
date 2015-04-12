@@ -20,14 +20,13 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -69,6 +68,7 @@ android.view.View.OnClickListener  {
 	EditText et_bidValue;
 	int whichFragment=11;
 	LinearLayout llForBidderslist;
+	private ProgressDialog progress;
 
 	@Override         
 	protected void onCreate(Bundle savedInstanceState) {
@@ -321,11 +321,14 @@ Response response =		 CommonData.convertGSonObjectToResponseClass(responseBody);
 			tv_biduser.setText(temp.getBids().get(i).getOffererName());
 			tv_bidtime.setText("5:32 m");
 			tv_vendorbidamount.setText(temp.getBids().get(i).getBidAmount());
+			cb_accept_or_complete.setTag(i);
+			cb_accept_or_complete.setOnClickListener(AuctionDetails.this);
 			// here set the data 	
 			llForBidderslist.addView(rowvi, i);
 			
+			
 		}
-
+ 
 		ed = (ExpandableDropView) findViewById(R.id.expandableView);
 		sv = (ScrollView) findViewById(R.id.sv);
 		ed.setChildView(llForBidderslist, sv); // adding view with data
@@ -372,9 +375,106 @@ Response response =		 CommonData.convertGSonObjectToResponseClass(responseBody);
 			getBidAmount();
 			break;
 
-
+		case R.id.cb_accept:
+			if(whichFragment==CommonData.OpenRequestFragment)
+			  notifyAcceptedBidToServer(v.getTag());
+			else
+			 notifyCompleteBidsToServer(v.getTag());
 
 		}
 
 	}
+	
+	private void notifyCompleteBidsToServer(Object tag2) {
+		Intent i = new Intent(AuctionDetails.this, RatingActivity.class);
+		i.putExtra("requestId",Integer.parseInt(CommonData.getAcceptedRequestsData().get(onListItemClickedId).getRequestId()));
+		startActivity(i);
+		finish();
+		
+	
+		mServerConnector.closeRequest(Integer.parseInt(CommonData.getAcceptedRequestsData().get(onListItemClickedId).getRequestId()), CommonData.ROLE_ID_USER, new AsyncHttpResponseHandler() {
+			
+			@Override
+			public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+				// TODO Auto-generated method stub
+		Response response = CommonData
+						.convertGSonObjectToResponseClass(responseBody);
+		
+		if (response.getStatus()
+				.equalsIgnoreCase("success")) {
+			CommonData.setAcceptedRequestsData(response.getData().getAcceptedRequests());
+			CommonData.setServicedRequestsData(response.getData().getServicedRequests());
+			Intent i = new Intent(AuctionDetails.this, RatingActivity.class);
+			i.putExtra("requestId",Integer.parseInt(CommonData.getAcceptedRequestsData().get(onListItemClickedId).getRequestId()));
+					startActivity(i);
+	       
+		//CommonData.hideProgressbar(AuctionDetails.this, progress);
+		finish();
+	}
+		
+			}
+			
+			@Override
+			public void onFailure(int statusCode, Header[] headers,
+					byte[] responseBody, Throwable error) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+	}
+
+
+
+	private void notifyAcceptedBidToServer(Object rowId) {
+
+		// TODO Auto-generated method stub
+	   int clickedid=  (Integer)rowId;
+	   
+	   mServerConnector.acceptBid(Integer.parseInt(CommonData.getOpenRequestsData().get(onListItemClickedId).getRequestId()), Integer.parseInt(CommonData.getOpenRequestsData().get(onListItemClickedId).getBids().get(clickedid).getBidId()), new AsyncHttpResponseHandler() {
+		
+		@Override
+		public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+			// TODO Auto-generated method stub
+			Response response = CommonData
+					.convertGSonObjectToResponseClass(responseBody);
+
+			if (response.getStatus().equals("success")) {
+				CommonData.setOpenRequestsData(response
+						.getData().getOpenRequests());
+				CommonData.setAcceptedRequestsData(response
+						.getData().getAcceptedRequests());
+				AuctionDetails.this.finish();
+				
+				
+				
+			}
+		}
+		
+		@Override
+		public void onFailure(int statusCode, Header[] headers,
+				byte[] responseBody, Throwable error) {
+			// TODO Auto-generated method stub
+			
+		}
+	});
+	   
+	   
+	}
+
+
+
+	private void callProgressBarOnUI()
+	{
+		progress = new ProgressDialog(AuctionDetails.this);
+		progress.setMessage("One moment!");
+		progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+		progress.setIndeterminate(false);
+		progress.show();
+		
+	}
+
+
+
+	
 }

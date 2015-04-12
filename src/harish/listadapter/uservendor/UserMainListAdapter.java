@@ -553,7 +553,7 @@ int id;
     	
     	for(int i = temps.size() - 1; i >= 0; i--)
     	{
-    		if(!((String) temps.get(i).getRequestStartDate().subSequence(6, 16)).toLowerCase(Locale.getDefault()).contains(cs))
+    		if((!((String) temps.get(i).getJobTitle()).toLowerCase(Locale.getDefault()).contains(cs)) && (!((String) temps.get(i).getTagsString()).toLowerCase(Locale.getDefault()).contains(cs)))
     			temps.remove(i);
     	}
 

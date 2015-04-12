@@ -10,11 +10,81 @@ public class Requestor_Json_Data_Structure {
 
 			requestStatus, requestStatusId, leastBidAmount, description,
 			totalBids, petType, petNature, age, services, numofhours,
-			numofkids, homestyle, sqFt, bedrooms, bathrooms, from_method,tutoringSubject, cost , edition ,author , bookTitle,isbn;
+			numofkids, homestyle, sqFt, bedrooms, bathrooms, from_method,tutoringSubject, cost , edition ,author , bookTitle,isbn,jobTitle;
 	
 
 	public ArrayList<Bid> bids;
 	public ArrayList<Bid> bids_open;
+	public ArrayList<String> tags;
+	
+	public String getTutoringSubject() {
+		return tutoringSubject;
+	}
+
+	public void setTutoringSubject(String tutoringSubject) {
+		this.tutoringSubject = tutoringSubject;
+	}
+
+	public String getCost() {
+		return cost;
+	}
+
+	public void setCost(String cost) {
+		this.cost = cost;
+	}
+
+	public String getEdition() {
+		return edition;
+	}
+
+	public void setEdition(String edition) {
+		this.edition = edition;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public String getBookTitle() {
+		return bookTitle;
+	}
+
+	public void setBookTitle(String bookTitle) {
+		this.bookTitle = bookTitle;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	
+
+	public String getJobTitle() {
+		return jobTitle;
+	}
+
+	public void setJobTitle(String jobTitle) {
+		this.jobTitle = jobTitle;
+	}
+
+	public ArrayList<String> getTags() {
+		return tags;
+	}
+
+	public void setTags(ArrayList<String> tags) {
+		this.tags = tags;
+	}
+
+
+
 	String tag = "Requestor_Json_Data_Structure";
 
 	/*public Requestor_Json_Data_Structure(String requestId, String categoryId,
@@ -328,6 +398,18 @@ public class Requestor_Json_Data_Structure {
 
 	public void setTag(String tag) {
 		this.tag = tag;
+	}
+	
+	public String getTagsString()
+	{
+		String tempStr = "";
+		
+		for(int i = 0; i < tags.size(); i++)
+		{
+			tempStr += tags.get(i) + "+";
+		}
+		
+		return tempStr;
 	}
 
 	
