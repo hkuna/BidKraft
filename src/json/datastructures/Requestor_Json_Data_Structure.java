@@ -2,20 +2,70 @@ package json.datastructures;
 
 import java.util.ArrayList;
 
-import push.classes.to.other.pkg.Bid;
-
 public class Requestor_Json_Data_Structure {
 
-	public String requestId, categoryId, createdDate, requestStartDate, requestStartTime ,
-
-			requestStatus, requestStatusId, leastBidAmount, description,
+	private String tag = "Requestor_Json_Data_Structure";
+	private String requestId, categoryId, createdDate, requestStartDate, requestStartTime ,requestStatus, requestStatusId, leastBidAmount, description,
 			totalBids, petType, petNature, age, services, numofhours,
-			numofkids, homestyle, sqFt, bedrooms, bathrooms, from_method,tutoringSubject, cost , edition ,author , bookTitle,isbn,jobTitle;
+			numofkids, homestyle, sqFt, bedrooms, bathrooms, from_method,tutoringSubject, cost , edition ,author , bookTitle,isbn,jobTitle,categoryName,requesterUserId,requestEndDate,bidEndDateTime,requesterUserName;
+	
+	int acceptedBidId;
 	
 
-	public ArrayList<Bid> bids;
-	public ArrayList<Bid> bids_open;
-	public ArrayList<String> tags;
+	private ArrayList<Bid> bids;
+	private ArrayList<Bid> bids_open;
+	private ArrayList<String> tags;
+	
+	
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
+	public String getRequesterUserId() {
+		return requesterUserId;
+	}
+
+	public void setRequesterUserId(String requesterUserId) {
+		this.requesterUserId = requesterUserId;
+	}
+
+	public String getRequestEndDate() {
+		return requestEndDate;
+	}
+
+	public void setRequestEndDate(String requestEndDate) {
+		this.requestEndDate = requestEndDate;
+	}
+
+	public String getBidEndDateTime() {
+		return bidEndDateTime;
+	}
+
+	public void setBidEndDateTime(String bidEndDateTime) {
+		this.bidEndDateTime = bidEndDateTime;
+	}
+
+	public String getRequesterUserName() {
+		return requesterUserName;
+	}
+
+	public void setRequesterUserName(String requesterUserName) {
+		this.requesterUserName = requesterUserName;
+	}
+
+	public int getAcceptedBidId() {
+		return acceptedBidId;
+	}
+
+	public void setAcceptedBidId(int acceptedBidId) {
+		this.acceptedBidId = acceptedBidId;
+	}
+
+	
 	
 	public String getTutoringSubject() {
 		return tutoringSubject;
@@ -85,113 +135,8 @@ public class Requestor_Json_Data_Structure {
 
 
 
-	String tag = "Requestor_Json_Data_Structure";
 
-	/*public Requestor_Json_Data_Structure(String requestId, String categoryId,
-			String description, String createdDate, String requestStartDate,
-			String requestStatus, String requestStatusId,
-			String leastBidAmount, String totalBids, JSONArray bidArray,
-			JSONObject obj, String from_method) {
-		this.requestId = requestId;
-		this.categoryId = categoryId;
-		this.description = description;
-		this.createdDate = createdDate;
-		this.requestStartDate = requestStartDate;
-		this.requestStatus = requestStatus;
-		this.requestStatusId = requestStatusId;
-		this.bids = new ArrayList<Bid>();
-		this.bids_open = new ArrayList<Bid>();
-		this.leastBidAmount = leastBidAmount;
-		this.totalBids = totalBids;
-		this.from_method = from_method;
-
-		Log.d(tag, "category id value " + categoryId + "int value is :"
-				+ Integer.parseInt(categoryId) + "request id is " + requestId);
-
-		switch (Integer.parseInt(categoryId)) {
-
-		case 1:
-			try {
-				this.numofhours = obj.getString("numberOfHours");
-				this.numofkids = obj.getString("numberOfKids");
-				this.petNature = "";
-				this.petType = "";
-				this.age = "";
-				this.services = "";
-				this.homestyle = "";
-				this.sqFt = "";
-				this.bedrooms = "";
-				this.bathrooms = "";
-			} catch (JSONException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			break;
-		case 2:
-			try {
-				this.numofhours = "";
-				this.numofkids = "";
-				this.petType = obj.getString("petType");
-				this.petNature = obj.getString("petNature");
-				this.age = obj.getString("age");
-				this.services = obj.getString("services");
-				this.homestyle = "";
-				this.sqFt = "";
-				this.bedrooms = "";
-				this.bathrooms = "";
-			} catch (JSONException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-
-			break;
-		case 3:
-			try {
-				this.numofhours = "";
-				this.numofkids = "";
-				this.petNature = "";
-				this.petType = "";
-				this.age = "";
-				this.services = "";
-				this.homestyle = obj.getString("homeStyle");
-				this.sqFt = obj.getString("sqFt");
-				this.bedrooms = obj.getString("bedRooms");
-				this.bathrooms = obj.getString("bathRooms");
-
-			} catch (JSONException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-
-			break;
-		case 4:
-
-			try {
-				this.numofhours = "";
-				this.numofkids = "";
-				this.petNature = "";
-				this.petType = "";
-				this.age = "";
-				this.services = "";
-				this.homestyle = "";
-				this.sqFt = "";
-				this.bedrooms = "";
-				this.bathrooms = "";
-
-				this.services = obj.getString("services");
-
-			} catch (JSONException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-
-			break;
-		case 5:
-			break;
-
-		}
-
-	}*/
+	
 	public String getRequestStartTime() {
 		return requestStartTime;
 	}

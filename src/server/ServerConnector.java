@@ -4,8 +4,8 @@ import harish.requestor.commondata.CommonData;
 
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
-import java.util.TimeZone;
 
 import org.apache.http.entity.StringEntity;
 import org.json.JSONArray;
@@ -17,7 +17,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 
-import com.google.gson.JsonArray;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
 public class ServerConnector {
@@ -262,7 +261,62 @@ public class ServerConnector {
 
 	}
 	
+	public void createService(String jobTitle ,int categoryId,String description , String requestStartDate , String requestEndDate  ,String bidEndDateTime,Object [] tags, AsyncHttpResponseHandler mHandler)
+	{
+		JSONObject jsonBody = new JSONObject();
+		
+		String[] alltags = Arrays.copyOf(tags, tags.length, String[].class);
+		
+try {
+	        JSONArray tag = new JSONArray(alltags);
+			jsonBody.put("categoryId", 3);
+			jsonBody.put("requesterUserId", CommonData.getUserId());
+			jsonBody.put("description",description);
+			jsonBody.put("tags",tag);
+			jsonBody.put("requestEndDate", convertDate(requestEndDate));
+			jsonBody.put("requestStartDate",convertDate(requestStartDate));
+			jsonBody.put("bidEndDateTime","Sat, 01 Apr 2015 12:00:00 EDT");
+			jsonBody.put("tags",tag);
+			jsonBody.put("jobTitle",jobTitle);	
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		Log.d(TAG, "the json string is" + jsonBody.toString());
+
+		try {
+			StringEntity entity = new StringEntity(jsonBody.toString());
+
+			mAsyncHttpClient.post(context, BASE_URL + "request/create", entity,
+					"application/json", mHandler);
+
+		} catch (UnsupportedEncodingException e) {
+
+			e.printStackTrace();
+		}
+		
+	}
 	
+	
+	private String convertDate(String inputDate) {
+		
+		String outputDate =  null;
+		try {
+			SimpleDateFormat formatter = new SimpleDateFormat("ddd MMM dd HH:mm:ss zzz yyyy");
+			Date date = formatter.parse(inputDate);
+			SimpleDateFormat sdf = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz");
+			outputDate = sdf.format(date);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+	 return outputDate;
+	
+	}
+
 	public void createTutoringservice(String requestedDate, String fromTime , String toTime , String subjects , String description,AsyncHttpResponseHandler mHandler )
 	{
 		JSONObject jsonBody = new JSONObject();
@@ -395,6 +449,8 @@ public class ServerConnector {
 			e.printStackTrace();
 		}
 	}
+	
+	
 
 	public void deleteRequest(String requestId, AsyncHttpResponseHandler mHandler) {
 		Log.d(TAG, "server connector" + requestId + " , " + requestId);
@@ -417,16 +473,17 @@ public class ServerConnector {
 	public void refreshData(String userId) {
 
 		// http://rikers.cs.odu.edu:8080/bidding/request/get
+		
 	}
 
 	public void placeBid(String requestId, String offererUserId,
 			String bidAmount, AsyncHttpResponseHandler mHandler) {
 		Log.d(TAG, "server connector" + requestId + " , " + requestId
-				+ offererUserId + bidAmount);
+				+ offererUserId + bidAmount); 
 		JSONObject mRequestParams = new JSONObject();
 		try {
-			mRequestParams.put("requestId", requestId);
-			mRequestParams.put("offererUserId", offererUserId);
+			mRequestParams.put("requestId", Integer.parseInt(requestId));
+			mRequestParams.put("offererUserId", Integer.parseInt(offererUserId));
 			mRequestParams.put("bidAmount", bidAmount);
 
 			StringEntity entity = new StringEntity(mRequestParams.toString());
@@ -440,24 +497,25 @@ public class ServerConnector {
 
 	}
 
-	public void closeRequest(int requestId,int roleId, AsyncHttpResponseHandler mHandler) {
-		Log.d(TAG, "server connector" + requestId + " , " + requestId);
-		JSONObject mRequestParams = new JSONObject();
-		try {
-			mRequestParams.put("requestId", requestId);
-			mRequestParams.put("userId",CommonData.userId);
-			mRequestParams.put("roleId",roleId);
+	public void closeRequest(String string,AsyncHttpResponseHandler mHandler) {
+		
 
-			StringEntity entity = new StringEntity(mRequestParams.toString());
+			StringEntity entity;
+			try {
+				Log.d(TAG, "server connector close request data " +string.toString() );
+				entity = new StringEntity(string.toString());
+				mAsyncHttpClient.post(context, BASE_URL
+						+ "request/status/update/serviced", entity,
+						"application/json", mHandler);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
 
-			mAsyncHttpClient.post(context, BASE_URL
-					+ "request/status/update/serviced", entity,
-					"application/json", mHandler);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+			
+		
 	}
 	
 	

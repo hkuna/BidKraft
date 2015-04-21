@@ -1,24 +1,38 @@
-package push.classes.to.other.pkg;
+package json.datastructures;
 
 import java.util.ArrayList;
 
-import json.datastructures.Requestor_Json_Data_Structure;
 
 
-
-public class Data {
+public class UserData {
 
 	ArrayList<Requestor_Json_Data_Structure> requests;
-	//ArrayList<PlacedBidsDataStruct> placedBids; // not using as they have changed the format of placed bids
 	ArrayList<Requestor_Json_Data_Structure> openRequests;
 	ArrayList<Requestor_Json_Data_Structure> acceptedRequests;
 	ArrayList<Requestor_Json_Data_Structure> servicedRequests;
 	ArrayList<Requestor_Json_Data_Structure> openBids;
 	ArrayList<Requestor_Json_Data_Structure> placedBids;
-	String userId;
-	String token ;
+	String userId, token ;
 	UserPreferences userPreferences;
-	//int roleId;
+	User user;
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public UserAddresses getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(UserAddresses addresses) {
+		this.addresses = addresses;
+	}
+
+	UserAddresses addresses;
+	
 
 	public UserPreferences getUserPreferences() {
 		return userPreferences;
@@ -72,14 +86,7 @@ public class Data {
 		this.openRequests = openRequests;
 	}
 	
-	/*public int getRoleId() {
-		return roleId;
-	}
-
-	public void setRoleId(int roleId) {
-		this.roleId = roleId;
-	}*/
-
+	
 	public String getUserId() {
 		return userId;
 	}
@@ -95,18 +102,6 @@ public class Data {
 	public void setToken(String token) {
 		this.token = token;
 	}
-
-	
-
-	
-
-/*	public ArrayList<PlacedBidsDataStruct> getPlacedBids() {
-		return placedBids;
-	}
-
-	public void setPlacedBids(ArrayList<PlacedBidsDataStruct> placedBids) {
-		this.placedBids = placedBids;
-	}*/
 
 	public ArrayList<Requestor_Json_Data_Structure> getRequests() {
 		return requests;

@@ -1,22 +1,14 @@
-package push.classes.to.other.pkg;
+package json.datastructures;
 
 public class Bid
 {
 	
 	public	 String bidId, offererUserId, bidAmount, createdDate, offererName, userName, deleted;
- 
-	//public	 RequestorBids(String bidId, String offererUserId, String bidAmount, String createdDate, String offererName, String userName, String deleted)
-	/*public	 Bid(String bidId, String offererUserId, String bidAmount, String createdDate, String offererName, String userName)
-	{
+	float offererRating;
+	int numOfRatings;
 	
-		this.bidId = bidId;
-		this.offererUserId = offererUserId;
-		this.bidAmount = bidAmount;
-		this.createdDate = createdDate;
-		this.offererName = offererName;
-		this.userName = userName;
-		//this.deleted = deleted;
-	}*/
+
+
 	@Override
 	public String toString() {
 		return "RequestorBids [bidId=" + bidId + ", offererUserId="
@@ -25,7 +17,24 @@ public class Bid
 				+ offererName + ", userName=" + userName + ", deleted="
 				+ deleted + "]";
 	}
-	
+	public float getOffererRating() {
+		return offererRating;
+	}
+
+
+	public void setOffererRating(float offererRating) {
+		this.offererRating = offererRating;
+	}
+
+
+	public int getNumOfRatings() {
+		return numOfRatings;
+	}
+
+
+	public void setNumOfRatings(int numOfRatings) {
+		this.numOfRatings = numOfRatings;
+	}
 	
 	public String getBidId() {
 		return bidId;

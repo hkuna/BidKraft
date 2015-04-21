@@ -1,4 +1,4 @@
-package push.classes.to.other.pkg;
+package json.datastructures;
 
 public class APS {
 public String alert,sound;

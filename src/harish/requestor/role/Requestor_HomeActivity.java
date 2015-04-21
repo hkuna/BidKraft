@@ -7,6 +7,7 @@ import org.apache.http.Header;
 import push.classes.to.other.pkg.Response;
 import push.classes.to.other.pkg.Vendor_Main_Activity;
 import push.classes.to.other.pkg.ParalleRequestHandler.OnServerSuccessCallListener;
+
 import remove.classes.from.the.pkg.CreateJobActivity;
 import remove.classes.from.the.pkg.SettingsActivity;
 import server.ServerConnector;
@@ -51,7 +52,6 @@ public class Requestor_HomeActivity extends FragmentActivity implements
 	
 	String TAG = "Requestor_HomeActivity";
 	ServerConnector mServerConnector;
-	//private DrawerLayout mDrawerLayout;
 
 	private CharSequence mTitle;
 	AppSectionsPagerAdapter mAppSectionsPagerAdapter;
@@ -96,48 +96,12 @@ public class Requestor_HomeActivity extends FragmentActivity implements
 			@Override
 			public void onClick(View v) {
 				
-             Intent i = new Intent(Requestor_HomeActivity.this , CreateJobActivity.class);
+             Intent i = new Intent(Requestor_HomeActivity.this , CreatePost.class);
              startActivity(i);
 				
 			}
 		});
 		
-		// mCategoryTitles = new
-		// String[]{"category_list","Home Repair","Baby Sitter",
-		// "Labour","Pet Care","Student Services"};
- 
- 
-//		mTitle = mDrawerTitle = getTitle();
-//		mCategoryTitles = getResources().getStringArray(R.array.sandwich_list);
-	//	mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layou);
-//		mDrawerList = (ListView) findViewById(R.id.left_drawer);
-
-	//	mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-	//			R.layout.drawer_list_item, R.id.createList, mCategoryTitles));
-
-	//	mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-
-	/*	mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-				R.drawable.ic_drawer, R.string.drawer_open,
-				R.string.drawer_close) {
-
-			// Called when a drawer has settled in a completely closed state. 
-			public void onDrawerClosed(View view) {
-				super.onDrawerClosed(view);
-				getActionBar().setTitle(mTitle);
-				invalidateOptionsMenu(); // creates call to
-											// onPrepareOptionsMenu()
-			}
-
-			/// Called when a drawer has settled in a completely open state. 
-			public void onDrawerOpened(View drawerView) {
-				super.onDrawerOpened(drawerView);
-				getActionBar().setTitle(mDrawerTitle);
-				invalidateOptionsMenu(); // creates call to
-											// onPrepareOptionsMenu()
-			}
-		};
-		*/
 
 		//setting the custom bar
 	    bar = getActionBar();
@@ -172,11 +136,6 @@ public class Requestor_HomeActivity extends FragmentActivity implements
 		
 		
 		// end of custom action bar setting
-		
-	
-
-		// Set the drawer toggle as the DrawerListener
-	//	mDrawerLayout.setDrawerListener(mDrawerToggle);
 
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections
@@ -257,7 +216,7 @@ public class Requestor_HomeActivity extends FragmentActivity implements
 			FragmentTransaction fragmentTransaction) {
 		// When the given tab is selected, switch to the corresponding page in
 		// the ViewPager.
-		
+		//mViewPager.setAdapter(mAppSectionsPagerAdapter);
 		mViewPager.setCurrentItem(tab.getPosition());
 	
 //setTabNotificationCount(tab.getPosition());
@@ -266,6 +225,7 @@ public class Requestor_HomeActivity extends FragmentActivity implements
 	@Override
 	public void onTabReselected(ActionBar.Tab tab,
 			FragmentTransaction fragmentTransaction) {
+		
 	}
 
 	/**
@@ -291,17 +251,12 @@ public class Requestor_HomeActivity extends FragmentActivity implements
 				fragment = new UserPendingServices();
 				break;
 
-			/*case 2:
-				fragment = new CreateService();
-				break;*/
-
+			
 			case 2:
 				fragment = new CompletedRequests();
 				break;
 
-			/*case 4:
-				fragment = new UserSettings();*/
-				// UserRequestsHistory
+			
 			}
 			return fragment;
 		}
@@ -335,45 +290,8 @@ public class Requestor_HomeActivity extends FragmentActivity implements
 		 
 	}
 
-	/*private class DrawerItemClickListener implements
-			ListView.OnItemClickListener {
+	
 
-		@Override
-		public void onItemClick(AdapterView parent, View view, int position,
-				long id) {
-			// if(position==1)
-			// selectItem(position);
-			// here actions to sandwich items are to be provided
-		}
-	}*/
-
-	/** Swaps fragments in the main content view */
-	private void selectItem(int position) {
-
-		// create a new post
-		/*
-		 * Intent i = new Intent(Requestor_HomeActivity.this,
-		 * CreateNewPost.class); startActivityForResult(i,
-		 * CommonData.getRequestCode());
-		 */
-
-		// Create a new fragment and specify the planet to show based on
-		// position
-		/*
-		 * Fragment fragment = new PlanetFragment(); Bundle args = new Bundle();
-		 * args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
-		 * fragment.setArguments(args);
-		 * 
-		 * // Insert the fragment by replacing any existing fragment
-		 * FragmentManager fragmentManager = getFragmentManager();
-		 * fragmentManager.beginTransaction() .replace(R.id.content_frame,
-		 * fragment) .commit();
-		 */
-		// Highlight the selected item, update the title, and close the drawer
-	/*	mDrawerList.setItemChecked(position, true);
-		setTitle(mCategoryTitles[position]);
-		mDrawerLayout.closeDrawer(mDrawerList);*/
-	}
 
 	@Override
 	public void setTitle(CharSequence title) {
@@ -391,39 +309,6 @@ public class Requestor_HomeActivity extends FragmentActivity implements
 
 	}
 
-	/*@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu items for use in the action bar
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.main_activity_actions, menu);
-		return super.onCreateOptionsMenu(menu);
-
-	}
-
-	public boolean onPrepareOptionsMenu(Menu menu) {
-		// If the nav drawer is open, hide action items related to the content
-		// view
-	//	boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-		// menu.findItem(R.id.vendor_consumer).setVisible(!drawerOpen);
-		return super.onPrepareOptionsMenu(menu);
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle item selection
-		if (mDrawerToggle.onOptionsItemSelected(item)) {
-			return true;
-		}
-		switch (item.getItemId()) {
-		case R.id.vendor_consumer:
-			Log.d(TAG, "toggle clicked");
-			switchScreen();
-			return true;
-
-		default:
-			return super.onOptionsItemSelected(item);
-		}
-	}*/
 
 	private void switchScreen() {
 		// TODO Auto-generated method stub
@@ -525,72 +410,6 @@ public class Requestor_HomeActivity extends FragmentActivity implements
 
 	}
 
-	/*@Override
-	protected void onPostCreate(Bundle savedInstanceState) {
-		super.onPostCreate(savedInstanceState);
-		// Sync the toggle state after onRestoreInstanceState has occurred.
-		mDrawerToggle.syncState();
-	}
-
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		super.onConfigurationChanged(newConfig);
-		mDrawerToggle.onConfigurationChanged(newConfig);
-	}*/
-	/**
-	 * A fragment that launches other parts of the demo application.
-	 */
-	/*
-	 * public static class LaunchpadSectionFragment extends Fragment {
-	 * 
-	 * @Override public View onCreateView(LayoutInflater inflater, ViewGroup
-	 * container, Bundle savedInstanceState) { View rootView =
-	 * inflater.inflate(R.layout.fragment_section_launchpad, container, false);
-	 * 
-	 * // Demonstration of a collection-browsing activity.
-	 * rootView.findViewById(R.id.demo_collection_button)
-	 * .setOnClickListener(new View.OnClickListener() {
-	 * 
-	 * @Override public void onClick(View view) { Intent intent = new
-	 * Intent(getActivity(), CollectionDemoActivity.class);
-	 * startActivity(intent); } });
-	 * 
-	 * // Demonstration of navigating to external activities.
-	 * rootView.findViewById(R.id.demo_external_activity)
-	 * .setOnClickListener(new View.OnClickListener() {
-	 * 
-	 * @Override public void onClick(View view) { // Create an intent that asks
-	 * the user to pick a photo, but using //
-	 * FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET, ensures that relaunching // the
-	 * application from the device home screen does not return // to the
-	 * external activity. Intent externalActivityIntent = new
-	 * Intent(Intent.ACTION_PICK); externalActivityIntent.setType("image/*");
-	 * externalActivityIntent.addFlags(
-	 * Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-	 * startActivity(externalActivityIntent); } });
-	 * 
-	 * return rootView; } }
-	 */
-
-	/**
-	 * A dummy fragment representing a section of the app, but that simply
-	 * displays dummy text.
-	 */
-	/*
-	 * public static class DummySectionFragment extends Fragment {
-	 * 
-	 * public static final String ARG_SECTION_NUMBER = "section_number";
-	 * 
-	 * @Override public View onCreateView(LayoutInflater inflater, ViewGroup
-	 * container, Bundle savedInstanceState) { View rootView =
-	 * inflater.inflate(R.layout.fragment_section_dummy, container, false);
-	 * Bundle args = getArguments(); ((TextView)
-	 * rootView.findViewById(android.R.id.text1)).setText(
-	 * getString(R.string.dummy_section_text, args.getInt(ARG_SECTION_NUMBER)));
-	 * return rootView; } }
-	 * 
-	 * 
-	 */
 	
 	@Override
 	protected void onResume() {

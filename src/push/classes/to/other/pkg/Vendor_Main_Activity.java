@@ -78,7 +78,7 @@ public class Vendor_Main_Activity extends FragmentActivity implements
 			mRequestTitle.setTextColor(Color.rgb(243, 156, 18));
 		
 			
-			ib_roleicon.setBackgroundDrawable(getResources().getDrawable(R.drawable.vendor_icon));
+			ib_roleicon.setBackgroundDrawable(getResources().getDrawable(R.drawable.client_icon));
 			
 			
 			ib_roleicon.setOnClickListener(new OnClickListener() {
@@ -121,6 +121,8 @@ public class Vendor_Main_Activity extends FragmentActivity implements
 					@Override
 					public void onPageSelected(int arg0) {
 						// TODO Auto-generated method stub
+						
+						
 						bar.setSelectedNavigationItem(arg0);
 
 						
@@ -144,14 +146,14 @@ public class Vendor_Main_Activity extends FragmentActivity implements
 	@Override
 	public void onTabReselected(Tab arg0, FragmentTransaction arg1) {
 		Log.d(Tag, "tab selected " + arg0.getPosition());
-
+		 mViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
 	}
 
 	@Override
 	public void onTabSelected(Tab arg0, FragmentTransaction arg1) {
 		// TODO Auto-generated method stub
 		Log.d(Tag, "tab selected " + arg0.getPosition());
-
+        mViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
 		mViewPager.setCurrentItem(arg0.getPosition());
 	}
 
@@ -173,14 +175,22 @@ public class Vendor_Main_Activity extends FragmentActivity implements
 		public Fragment getItem(int arg0) {
 			// TODO Auto-generated method stub
 			Fragment fm = null;
+              switch(arg0)
+              {
+              
+              case 0 : fm = new OpenBidsForVendor();
+            	  break;
+            	  
+              case 1 :
+            	  fm = new VendorPlacedBids();
+            	  break;
+            	  
+              case 2 :
+            	  fm = new BidsWon();
+            	  break;
+            	  
+              }
 
-			if (arg0 == 0) {
-				Log.d(Tag, "open Bids");
-				fm = new OpenBidsForVendor();
-			} else {
-				Log.d(Tag, "Placed bids");
-				fm = new VendorPlacedBids();
-			}
 
 			return fm;
 
@@ -189,7 +199,7 @@ public class Vendor_Main_Activity extends FragmentActivity implements
 		@Override
 		public int getCount() {
 			// TODO Auto-generated method stub
-			return 2;
+			return 3;
 		}
 
 	}

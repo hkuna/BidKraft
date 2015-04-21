@@ -2,11 +2,12 @@ package remove.classes.from.the.pkg;
 
 import java.util.ArrayList;
 
+import json.datastructures.Bid;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import push.classes.to.other.pkg.Bid;
 import android.util.Log;
 
 

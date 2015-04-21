@@ -1,9 +1,18 @@
-package push.classes.to.other.pkg;
+package json.datastructures;
+
 
 public class UserPreferences {
 
+	String [] categoryIds;
 	RequestorSettings requesterSettings;
 	VendorSettings vendorSettings;
+	
+	public String[] getCategoryIds() {
+		return categoryIds;
+	}
+	public void setCategoryIds(String[] categoryIds) {
+		this.categoryIds = categoryIds;
+	}
 	public RequestorSettings getRequesterSettings() {
 		return requesterSettings;
 	}

@@ -9,6 +9,8 @@ import push.classes.to.other.pkg.PlacedBidsDataStruct;
 import push.classes.to.other.pkg.Response;
 import push.classes.to.other.pkg.Vendor_Main_Activity;
 import json.datastructures.Requestor_Json_Data_Structure;
+import json.datastructures.User;
+import json.datastructures.UserAddresses;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -36,9 +38,10 @@ public class CommonData {
 	public static	ArrayList<Requestor_Json_Data_Structure> servicedRequestsData;
 	public static	ArrayList<Requestor_Json_Data_Structure> openBidsData;
 	public static   ArrayList<Requestor_Json_Data_Structure> placedBidsData;
-	public static ArrayList<Requestor_Json_Data_Structure> acceptedRequestsData;
+	public static   ArrayList<Requestor_Json_Data_Structure> acceptedRequestsData;
 	public static final int ROLE_ID_USER = 1;
 	public static final int ROLE_ID_VENDOR = 2;
+   public static String userId;
 	
 	public static final int OpenRequestFragment= 11 , AcceptedRequestsFragment = 22, CompletedRequestsFragment =33 , OpenBidsFragment =44 , PlacedBidsFragment =55 , BidsWonFragment=66;
 	
@@ -82,7 +85,23 @@ public class CommonData {
 	}
 	public static final String auction = "auction";
 	public static String token;
-	public static String userId;
+	public static UserAddresses mUserAddresses;
+	
+	public static UserAddresses getmUserAddresses() {
+		return mUserAddresses;
+	}
+
+	public static void setmUserAddresses(UserAddresses mUserAddresses) {
+		CommonData.mUserAddresses = mUserAddresses;
+	}
+	public static User userDetails;
+	public static User getUserDetails() {
+		return userDetails;
+	}
+
+	public static void setUserDetails(User userDetails) {
+		CommonData.userDetails = userDetails;
+	}
 	public static int roleId1;
 	static int requestCode = 1;
 	static String TAG = "CommonData";
@@ -91,12 +110,10 @@ public class CommonData {
 	public final static String userCurrentRequestsFragment = "userCurrentRequests";
 	public final static String userPendingServicesFragment = "userPendingServices";
 
+
 	final static String BidsFragment = "Ope";
 
 	public CommonData() {
-	/*	userOpenRequestsData = new ArrayList<Requestor_Json_Data_Structure>();
-		vendorOpenBidsData = new ArrayList<Requestor_Json_Data_Structure>();
-		vendorPlacedBidsData = new ArrayList<PlacedBidsDataStruct>();*/
 		acceptedRequestsData = new ArrayList<Requestor_Json_Data_Structure>();
 		openRequestsData = new ArrayList<Requestor_Json_Data_Structure>();
 		servicedRequestsData = new ArrayList<Requestor_Json_Data_Structure>();
@@ -221,7 +238,7 @@ public class CommonData {
 		Log.d("Common DATA", "inside show progress bar" + ctx);
 		ProgressDialog progress;
 		progress = new ProgressDialog(ctx);
-		progress.setMessage("Verifying User");
+		progress.setMessage("One Moment");
 		progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 		progress.setIndeterminate(false);
 		return progress;
@@ -241,23 +258,12 @@ public class CommonData {
 			Log.d(TAG,
 					"reading response value after sihn up"
 							+ CommonData.getToken() + CommonData.getUserId());
-			//CommonData.setRoleId(response.getData().getRoleId());
-
-
-
-			// Log.d(TAG,"respeonse after login query "+CommonData.requestdatastruct.toString()
-			// +"size is "+CommonData.requestdatastruct.size());
-
-			//if (CommonData.getRoleId() == 1 || CommonData.getRoleId() == 3) {
+		
 				Intent signUpToHome = new Intent(mContext,
 						Requestor_HomeActivity.class);
 				mContext.startActivity(signUpToHome);
 				((Activity) mContext).finish();
-			/* }else if (CommonData.getRoleId() == 2) {
-				Intent i = new Intent(mContext, Vendor_Main_Activity.class);
-				mContext.startActivity(i);
-				((Activity) mContext).finish();
-			}*/
+			
 		}
 
 		return response.getStatus();
@@ -266,13 +272,8 @@ public class CommonData {
 
 	public static Response convertGSonObjectToResponseClass(byte[] responseBody) {
 		String resp = new String(responseBody);
-
-		Gson gson = new Gson();
-
-		Response response = gson.fromJson(resp, Response.class);
-		
-	
-
+        Gson gson = new Gson();
+        Response response = gson.fromJson(resp, Response.class);
 		return response;
 
 	}
@@ -286,27 +287,27 @@ public class CommonData {
 			Log.d(TAG, "inside switch " + Integer.parseInt(categoryid));
 
 			categoryidimage.setImageDrawable(context.getResources()
-					.getDrawable(R.drawable.baby_icon));
+					.getDrawable(R.drawable.rigid_baby));
 			break;
 		case 2:
 			categoryidimage.setImageDrawable(context.getResources()
-					.getDrawable(R.drawable.home_repair));
+					.getDrawable(R.drawable.pet));
 			break;
 		case 3:
 			categoryidimage.setImageDrawable(context.getResources()
-					.getDrawable(R.drawable.house_clean));
+					.getDrawable(R.drawable.tutor));
 			break;
 		case 4:
 			categoryidimage.setImageDrawable(context.getResources()
-					.getDrawable(R.drawable.pet_care));
+					.getDrawable(R.drawable.textbook));
 			
 		case 5:
 			categoryidimage.setImageDrawable(context.getResources()
-					.getDrawable(R.drawable.tutoring));
+					.getDrawable(R.drawable.tutor));
 			break;
 		case 6:
 			categoryidimage.setImageDrawable(context.getResources()
-					.getDrawable(R.drawable.book));
+					.getDrawable(R.drawable.textbook));
 			break;
 		}
 
@@ -314,7 +315,6 @@ public class CommonData {
 	
 	public static Bitmap createBitmap(String imageFilePath)
     {
-		
 		Bitmap  dummyBitmap = BitmapFactory.decodeFile(imageFilePath);
 		 int rotate = 0;
 		 try {

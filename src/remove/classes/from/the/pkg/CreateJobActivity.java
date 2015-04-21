@@ -218,15 +218,24 @@ public class CreateJobActivity extends Activity{
 package remove.classes.from.the.pkg;
 
 import harish.custom.view.FlowLayout;
+import harish.requestor.commondata.CommonData;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import org.apache.http.Header;
+
+import push.classes.to.other.pkg.Response;
+import server.ServerConnector;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -234,15 +243,18 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.babloosashi.neighbour.R;
+import com.google.gson.Gson;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 
 
-public class CreateJobActivity extends Activity{
+public class CreateJobActivity extends Activity implements OnClickListener {
 
     private TextView tvBiddingEnds;
     private TextView tvRequestDate;
@@ -250,20 +262,28 @@ public class CreateJobActivity extends Activity{
     private EditText etTitle;
     private EditText etDescription;
     private FlowLayout tagsLayout;
-
+    private ServerConnector mServerConnector;
     private int mHour, mMinute;
-
+    private ArrayList<String> tags;
+    int tagCounter;
+    private String requestedDate, endDate , biddingEndTime ="abc"; 
+    String TAG ="CreateJobActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_job);
-
+        setCustomActionBar();
+        mServerConnector = new ServerConnector(this);
         tvBiddingEnds = (TextView)findViewById(R.id.tvBiddingEnds);
         tvRequestDate = (TextView) findViewById(R.id.tvRequestDate);
         tvEndDate = (TextView) findViewById(R.id.tvEndDate);
         etTitle = (EditText) findViewById(R.id.etTitle);
         etDescription = (EditText) findViewById(R.id.etDescription);
         tagsLayout = (FlowLayout) findViewById(R.id.tagsLayout);
+        tvRequestDate.setOnClickListener(this);
+        tvEndDate.setOnClickListener(this);
+        tags = new ArrayList<String>();
+        
 
         //Instantiate tags section
         setUpTags();
@@ -339,6 +359,23 @@ public class CreateJobActivity extends Activity{
                         timePicker.getCurrentMinute());
 
                 updatedTextView.setText(calendar.getTime().toString());
+                
+                switch(updatedTextView.getId())
+                {
+                	case R.id.tvBiddingEnds:
+                		biddingEndTime = "abc";
+                		break;
+                		
+                	case R.id.tvRequestDate:
+                		requestedDate = calendar.getTime().toString();
+                		break;
+                	case R.id.tvEndDate :
+                		endDate = calendar.getTime().toString();
+                		break;
+                }
+                
+                
+                
                 alertDialog.dismiss();
             }});
         alertDialog.setView(dialogView);
@@ -381,12 +418,18 @@ public class CreateJobActivity extends Activity{
                         newTag.setText(value);
                         newTag.setTag(value);
                         newTag.setBackground(getResources().getDrawable(R.drawable.round_corners));
+                        
+                        tags.add(value);
+                        
+                        
                         //newTag.setBackgroundColor(Color.parseColor("#F39C12"));
                         newTag.setOnClickListener(new OnClickListener() {
                             @Override
                             public void onClick(View v) {
 
                                 tagsLayout.removeView(tagsLayout.findViewWithTag(value));
+                                
+                                tags.remove(value);
                             }
                         }); //closing the setOnClickListener method
 
@@ -408,4 +451,121 @@ public class CreateJobActivity extends Activity{
 
         tagsLayout.addView(addBtn, 0, layoutParams);
     }
+    
+    private void setCustomActionBar()
+	{
+    	ActionBar bar = getActionBar();
+		bar.setDisplayShowHomeEnabled(false);
+		bar.setDisplayShowTitleEnabled(false);
+		LayoutInflater mInflater = LayoutInflater.from(this);
+		View mCustomView = mInflater.inflate(R.layout.custom_actionbar_for_customer_support, null);
+		TextView tvPageTitle = (TextView) mCustomView.findViewById(R.id.tv_cs_pagetitle);
+		tvPageTitle.setText("Create Job");
+        TextView tvActionSend = (TextView) mCustomView
+				.findViewById(R.id.tv_cs_send);
+		
+		tvActionSend.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				//handle the send action
+				
+				if(validateForm())
+				   notifyCreatePostToserver();
+			
+				
+				
+			}
+
+			
+		});
+		
+		
+		bar.setCustomView(mCustomView);
+		bar.setDisplayShowHomeEnabled(false);
+		bar.setDisplayShowCustomEnabled(true);
+
+	}
+
+    private void notifyCreatePostToserver() {
+    	
+    	
+    	mServerConnector.createService(etTitle.getText().toString(), 5, etDescription.getText().toString(), requestedDate, endDate,  endDate,tags.toArray(), new AsyncHttpResponseHandler() {
+			
+			@Override
+			public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+				String resp = new String(responseBody);
+
+				Gson gson = new Gson();
+				
+
+				Response response = gson.fromJson(resp, Response.class);
+				if(response.getStatus().equalsIgnoreCase("success"))
+				{
+				CommonData.openRequestsData = response.getData()
+						.getRequests();
+				Log.d(TAG, "Creating New post" + resp);
+				CommonData.setSignUpflag(false); // because this will populate the create request
+				finish();
+				}
+				
+				
+			}
+			
+			@Override
+			public void onFailure(int statusCode, Header[] headers,
+					byte[] responseBody, Throwable error) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		
+	}
+
+	private boolean validateForm() {
+		
+		boolean form_valid = false;
+		
+		if (!(etTitle.getText().toString()==null || etTitle.getText().toString().equals("")))
+			form_valid= true;
+		if(!(requestedDate.equals("") || requestedDate==null))
+			form_valid = true;
+		
+		if(!(endDate.equals("") || endDate==null))
+			form_valid = true;
+		
+		if(!(biddingEndTime.equals("") || biddingEndTime==null))
+			form_valid = true;
+		
+		if(tags.size()!= 0 && tags!=null )
+			form_valid=true;
+		
+		if(!(etDescription.getText().toString()==null || etDescription.getText().toString().equals("")))
+			form_valid = true;
+		
+		
+		return form_valid;
+	}
+    
+    
+	@Override
+	public void onClick(View v) {
+		switch(v.getId())
+		{
+		
+		case R.id.tvRequestDate:
+			setAndChangeDateTimeTextView(tvRequestDate);
+			break;
+			
+		case R.id.tvEndDate:
+			setAndChangeDateTimeTextView(tvEndDate);
+			break;
+
+		}
+		 
+		
+	}
 }

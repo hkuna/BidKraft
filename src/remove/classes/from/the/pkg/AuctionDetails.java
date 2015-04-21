@@ -5,7 +5,11 @@ import harish.listadapter.uservendor.UserMainListAdapter;
 import harish.listadapter.uservendor.VendorMainListAdapter;
 import harish.requestor.commondata.CommonData;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import json.datastructures.Requestor_Json_Data_Structure;
 
@@ -89,6 +93,8 @@ android.view.View.OnClickListener  {
 		btn_bid = (Button) findViewById(R.id.btn_bid);
 		btn_bid.setOnClickListener(this);
 		et_bidValue = (EditText) findViewById(R.id.et_bidAmount);
+		
+		
 		preRequistesForPopulatingData();
 
 
@@ -97,7 +103,7 @@ android.view.View.OnClickListener  {
 
 
 	private void getBidAmount() {
-		AlertDialog.Builder alert = new AlertDialog.Builder(AuctionDetails.this);
+	/*	AlertDialog.Builder alert = new AlertDialog.Builder(AuctionDetails.this);
 
 		alert.setTitle("Bid Amount");
 		alert.setMessage("Please Enter Bid Amount");
@@ -113,60 +119,7 @@ android.view.View.OnClickListener  {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
-				final ProgressDialog progress = CommonData
-						.showProgressBar(AuctionDetails.this);
-				progress.show();
-
-				mServerConnector.placeBid(
-						CommonData.getOpenBidsData().get(onListItemClickedId)
-						.getRequestId(),
-						CommonData.getUserId(), input.getText()
-						.toString(),
-						new AsyncHttpResponseHandler() {
-
-							@Override
-							public void onSuccess(int statusCode,
-									Header[] headers,
-									byte[] responseBody) {
-								// TODO Auto-generated method stub
-
-								Response response = CommonData
-										.convertGSonObjectToResponseClass(responseBody);
-
-								// after succesfully placing bid , the
-								// bid should be moved from open bids to
-								// placed bids , but cannot be moved
-								// because the structure is different
-
-								if (response.getStatus()
-										.equalsIgnoreCase("success")) {
-
-									// CommonData.vendorPlacedBidsData.add(CommonData.vendorOpenBidsData.get(onListItemClickedId).getBids());
-
-
-									CommonData.setOpenBidsData(response.getData().getOpenBids());
-
-									CommonData.setPlacedBidsData(response.getData().getPlacedBids());
-
-									Log.d(tag,"bid placed response for open bids" +response.getData().getOpenBids() );
-
-									Log.d(tag," bid placed response for placed bids"+response.getData().getPlacedBids());
-
-									finish();
-								}
-
-							}
-
-							@Override
-							public void onFailure(int statusCode,
-									Header[] headers,
-									byte[] responseBody, Throwable error) {
-								// TODO Auto-generated method stub
-
-							}
-						});
-				CommonData.hideProgressbar(AuctionDetails.this,
-						progress);
+				
 			}
 		});
 
@@ -180,7 +133,69 @@ android.view.View.OnClickListener  {
 		});
 
 		alert.show();
+*/
+		
+		final ProgressDialog progress = CommonData
+				.showProgressBar(AuctionDetails.this);
+		progress.show();
 
+		mServerConnector.placeBid(
+				CommonData.getOpenBidsData().get(onListItemClickedId)
+				.getRequestId(),
+				CommonData.getUserId(), et_bidValue.getText()
+				.toString(),
+				new AsyncHttpResponseHandler() {
+
+					@Override
+					public void onSuccess(int statusCode,
+							Header[] headers,
+							byte[] responseBody) {
+						// TODO Auto-generated method stub
+
+						Response response = CommonData
+								.convertGSonObjectToResponseClass(responseBody);
+
+						// after succesfully placing bid , the
+						// bid should be moved from open bids to
+						// placed bids , but cannot be moved
+						// because the structure is different
+
+						if (response.getStatus()
+								.equalsIgnoreCase("success")) {
+
+							// CommonData.vendorPlacedBidsData.add(CommonData.vendorOpenBidsData.get(onListItemClickedId).getBids());
+
+
+							CommonData.setOpenBidsData(response.getData().getOpenBids());
+
+							CommonData.setPlacedBidsData(response.getData().getPlacedBids());
+
+							Log.d(tag,"bid placed response for open bids" +response.getData().getOpenBids() );
+
+							Log.d(tag," bid placed response for placed bids"+response.getData().getPlacedBids());
+							
+							drawListViewUnderScrollViewForDisplayingBidDetails(getDataForFragment());
+
+							finish();
+						}
+
+					}
+
+					@Override
+					public void onFailure(int statusCode,
+							Header[] headers,
+							byte[] responseBody, Throwable error) {
+						// TODO Auto-generated method stub
+						Log.d(tag,"failure" );
+						
+
+					}
+				});
+		CommonData.hideProgressbar(AuctionDetails.this,
+				progress);	
+		
+		
+		
 	}
 
 
@@ -210,18 +225,7 @@ Response response =		 CommonData.convertGSonObjectToResponseClass(responseBody);
 
 }*/
 
-	private int getFromFragment(String fromfragment) {
 
-		if (fromfragment.equalsIgnoreCase("User_Current_Requests")) {
-			return 1;
-		} else if (fromfragment.equalsIgnoreCase("UserPendingServices")) {
-			return 2;
-		} else { // servicedFragment
-			return 3;
-
-		}
-
-	}
 
 	private void  preRequistesForPopulatingData()
 	{
@@ -240,9 +244,25 @@ Response response =		 CommonData.convertGSonObjectToResponseClass(responseBody);
 
 	private void populateDataOnUi(Requestor_Json_Data_Structure temp) {
 
-		tv_username.setText(CommonData.getUserId());
+		tv_username.setText(CommonData.getUserDetails().getUserName());
 		tv_date.setText(temp.getRequestStartDate());
 		tv_description.setText(temp.getDescription());
+		tv_lowestbid.setText("$"+temp.getLeastBidAmount()+"\n"+"Lowest Bid");
+		
+		try {
+			// date conversion
+			SimpleDateFormat formatter = new SimpleDateFormat("ddd, dd MMM yyyy HH:mm:ss zzz");
+			Date date;
+			date = formatter.parse(temp.getBidEndDateTime());
+			  int days =(Calendar.getInstance().DAY_OF_MONTH -date.getDay()) ;
+			  tv_timeleft.setText(days +"days Left");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
 		
 		if(whichFragment< 44)
 		{
@@ -277,11 +297,9 @@ Response response =		 CommonData.convertGSonObjectToResponseClass(responseBody);
 		cb_accept_or_complete = (CheckBox) rowvi.findViewById(R.id.cb_accept);
 		cb_accept_or_complete.setOnClickListener(this);
 		
+		
 		if(temp.getBids().size()!=0)
 		addRowDataForListViewInEachFragment(rowvi, temp);
-        
-		
-
 
 	}
 
@@ -319,10 +337,30 @@ Response response =		 CommonData.convertGSonObjectToResponseClass(responseBody);
 		for(int i=0 ; i< temp.getBids().size(); i++)
 		{
 			tv_biduser.setText(temp.getBids().get(i).getOffererName());
-			tv_bidtime.setText("5:32 m");
-			tv_vendorbidamount.setText(temp.getBids().get(i).getBidAmount());
+			tv_vendorbidamount.setText(temp.getBids().get(i).getBidAmount()+"/hr");
+			
+			
+			try {
+				// date conversion
+				SimpleDateFormat formatter = new SimpleDateFormat("ddd, dd MMM yyyy HH:mm:ss zzz");
+				Date date;
+				date = formatter.parse(temp.getBids().get(i).getCreatedDate());
+				  int days =(Calendar.getInstance().DAY_OF_MONTH -date.getDay()) ;
+				  tv_bidtime.setText(days +"days ago");
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	
+		  
+		    		
+			
+			
+		
 			cb_accept_or_complete.setTag(i);
 			cb_accept_or_complete.setOnClickListener(AuctionDetails.this);
+			if(whichFragment >=44)
+				cb_accept_or_complete.setVisibility(View.GONE);
 			// here set the data 	
 			llForBidderslist.addView(rowvi, i);
 			
@@ -345,7 +383,8 @@ Response response =		 CommonData.convertGSonObjectToResponseClass(responseBody);
 		LayoutInflater mInflater = LayoutInflater.from(this);
 		View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
 		TextView mRequestTitle = (TextView) mCustomView.findViewById(R.id.tv_request_subject);
-
+		mRequestTitle.setText("Details");
+        
 
 		ImageButton ib_roleicon = (ImageButton) mCustomView
 				.findViewById(R.id.ib_roleIcon);
@@ -379,49 +418,21 @@ Response response =		 CommonData.convertGSonObjectToResponseClass(responseBody);
 			if(whichFragment==CommonData.OpenRequestFragment)
 			  notifyAcceptedBidToServer(v.getTag());
 			else
-			 notifyCompleteBidsToServer(v.getTag());
+			 takeUserToRatingsScreen(v.getTag());
 
 		}
 
 	}
 	
-	private void notifyCompleteBidsToServer(Object tag2) {
+	private void takeUserToRatingsScreen(Object tag) {
+		int onChildListItemClicked = (Integer) tag;
 		Intent i = new Intent(AuctionDetails.this, RatingActivity.class);
 		i.putExtra("requestId",Integer.parseInt(CommonData.getAcceptedRequestsData().get(onListItemClickedId).getRequestId()));
+		i.putExtra("onChildListItemClicked", onChildListItemClicked);
+		i.putExtra("onListItemClickedId",onListItemClickedId);
 		startActivity(i);
 		finish();
-		
 	
-		mServerConnector.closeRequest(Integer.parseInt(CommonData.getAcceptedRequestsData().get(onListItemClickedId).getRequestId()), CommonData.ROLE_ID_USER, new AsyncHttpResponseHandler() {
-			
-			@Override
-			public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-				// TODO Auto-generated method stub
-		Response response = CommonData
-						.convertGSonObjectToResponseClass(responseBody);
-		
-		if (response.getStatus()
-				.equalsIgnoreCase("success")) {
-			CommonData.setAcceptedRequestsData(response.getData().getAcceptedRequests());
-			CommonData.setServicedRequestsData(response.getData().getServicedRequests());
-			Intent i = new Intent(AuctionDetails.this, RatingActivity.class);
-			i.putExtra("requestId",Integer.parseInt(CommonData.getAcceptedRequestsData().get(onListItemClickedId).getRequestId()));
-					startActivity(i);
-	       
-		//CommonData.hideProgressbar(AuctionDetails.this, progress);
-		finish();
-	}
-		
-			}
-			
-			@Override
-			public void onFailure(int statusCode, Header[] headers,
-					byte[] responseBody, Throwable error) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-		
 	}
 
 
@@ -445,9 +456,7 @@ Response response =		 CommonData.convertGSonObjectToResponseClass(responseBody);
 				CommonData.setAcceptedRequestsData(response
 						.getData().getAcceptedRequests());
 				AuctionDetails.this.finish();
-				
-				
-				
+	
 			}
 		}
 		

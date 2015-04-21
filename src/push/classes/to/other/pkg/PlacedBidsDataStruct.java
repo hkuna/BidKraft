@@ -1,5 +1,6 @@
 package push.classes.to.other.pkg;
 
+import json.datastructures.Bid;
 import json.datastructures.Requestor_Json_Data_Structure;
 
 public class PlacedBidsDataStruct {

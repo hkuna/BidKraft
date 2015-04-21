@@ -442,6 +442,7 @@ public class Login_Activity extends FragmentActivity {
 							
 							CommonData.setToken(response.getData().getToken());
 							CommonData.setUserId(response.getData().getUserId());
+							
 							Log.d(TAG,
 									"reading response value login"
 											+ CommonData.getToken() + CommonData.getUserId());
@@ -463,6 +464,8 @@ public class Login_Activity extends FragmentActivity {
 								            CommonData.setVendorSettingId(response.getData().getUserPreferences().getVendorSettings().getUserSettingId());
 								            CommonData.setVendorRadius(response.getData().getUserPreferences().getVendorSettings().getVendorRadius());
 								            CommonData.setRequestorRadius(response.getData().getUserPreferences().getRequesterSettings().getRequesterRadius());
+								            
+								            CommonData.setUserDetails(response.getData().getUser());
 								            
 								          /*  Intent signUpToHome = new Intent(Login_Activity1.this,
 													Requestor_HomeActivity.class);

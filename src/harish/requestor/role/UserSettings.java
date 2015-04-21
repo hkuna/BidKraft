@@ -77,11 +77,12 @@ String Tag ="Settings";
 		case 2: 
 		     Intent k = new Intent (getActivity(), VendorPreferences.class);
 		     startActivity(k);
+		     break;
 		     
 		case 3: 
 			
 			Intent s = new Intent(getActivity(),CustomerSupport.class);
-			
+			break;
 		}
 	}
 }

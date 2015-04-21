@@ -11,11 +11,11 @@ import java.util.Locale;
 
 import javax.crypto.spec.PSource;
 
+import json.datastructures.Bid;
 import json.datastructures.Requestor_Json_Data_Structure;
 
 import org.apache.http.Header;
 
-import push.classes.to.other.pkg.Bid;
 import push.classes.to.other.pkg.Response;
 import remove.classes.from.the.pkg.PayPalActivity;
 import remove.classes.from.the.pkg.RatingActivity;

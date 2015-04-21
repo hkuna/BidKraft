@@ -27,7 +27,7 @@ public class CompletedRequests extends ListFragment {
 	UserMainListAdapter mUser_Vendor_ListAdapter;
 	ServerConnector mServerConnector;
 	
-	
+	String TAG = "CompletedRequests";
 
 String Tag ="CompletedRequests";
 	@Override
@@ -63,7 +63,7 @@ else{
 getListView().setVisibility(View.VISIBLE);
 tv_noListMessage.setVisibility(View.GONE);
 
-if (CommonData.getServicedRequestsData().size() != 0) // dont set when data is not present in list
+if (CommonData.getServicedRequestsData().size() != 0) // don't set when data is not present in list
 {
 	mUser_Vendor_ListAdapter = new UserMainListAdapter(getActivity(),
 			"ServicedRequests", "requestor", -1);
@@ -75,7 +75,7 @@ serviced_list.setOnItemClickListener(new OnItemClickListener() {
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view,
 			int position, long id) {
-		Intent from_current_requests_to_request_bids = new Intent(
+		/*Intent from_current_requests_to_request_bids = new Intent(
 				getActivity(), AuctionDetails.class);
 		from_current_requests_to_request_bids.putExtra("position", id);
 		from_current_requests_to_request_bids.putExtra("fromfragment",
@@ -84,7 +84,8 @@ serviced_list.setOnItemClickListener(new OnItemClickListener() {
 		Log.d(Tag, "position is" + id);
 		from_current_requests_to_request_bids.putExtra("FromFragment",CommonData.CompletedRequestsFragment);
 
-		startActivity(from_current_requests_to_request_bids);
+		startActivity(from_current_requests_to_request_bids);*/
+		Log.d(TAG ,"Nothing to View ");
 	}
 });
 
@@ -121,7 +122,7 @@ else
 		
 		mUser_Vendor_ListAdapter = new UserMainListAdapter(getActivity(),
 				"ServicedRequests", "requestor", -1);
-		if (CommonData.getAcceptedRequestsData().size() != 0)
+		if (CommonData.getServicedRequestsData().size() != 0)
 		{
 			mUser_Vendor_ListAdapter = new UserMainListAdapter(getActivity(),
 					"ServicedRequests", "requestor", -1);
