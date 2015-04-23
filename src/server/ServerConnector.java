@@ -23,7 +23,7 @@ public class ServerConnector {
 
 	private String TAG = "Sever Connector";
 
-	private String BASE_URL = "http://rikers.cs.odu.edu:8080/bidding/";
+	private String BASE_URL = "http://54.88.17.100:8080/bidding/";
 
 	private Context context;
 
@@ -52,8 +52,7 @@ public class ServerConnector {
 
 		try {
 			mRequestParams.put("userName", username);
-			mRequestParams.put("firstName", fname);
-			mRequestParams.put("lastName", lname);
+			mRequestParams.put("name", fname);
 			mRequestParams.put("emailId", email);
 			mRequestParams.put("cellPhone", phonenumber);
 			mRequestParams.put("password", password);
@@ -269,13 +268,13 @@ public class ServerConnector {
 		
 try {
 	        JSONArray tag = new JSONArray(alltags);
-			jsonBody.put("categoryId", 3);
+			jsonBody.put("categoryId", categoryId);
 			jsonBody.put("requesterUserId", CommonData.getUserId());
 			jsonBody.put("description",description);
 			jsonBody.put("tags",tag);
 			jsonBody.put("requestEndDate", convertDate(requestEndDate));
 			jsonBody.put("requestStartDate",convertDate(requestStartDate));
-			jsonBody.put("bidEndDateTime","Sat, 01 Apr 2015 12:00:00 EDT");
+			jsonBody.put("bidEndDateTime",convertDate(bidEndDateTime));
 			jsonBody.put("tags",tag);
 			jsonBody.put("jobTitle",jobTitle);	
 			

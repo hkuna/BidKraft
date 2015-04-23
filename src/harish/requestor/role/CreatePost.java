@@ -25,8 +25,8 @@ public class CreatePost extends Activity {
 	protected static final String EXTRA_RES_ID = "POS";
 	
 	private ArrayList<Integer> serviceCategories = new ArrayList<Integer>(
-			Arrays.asList(R.drawable.pet, R.drawable.rigid_baby,
-					R.drawable.textbook, R.drawable.tutor));
+			Arrays.asList( R.drawable.rigid_baby,R.drawable.pet,
+					 R.drawable.tutor,R.drawable.textbook));
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,8 @@ public class CreatePost extends Activity {
 				//Create an Intent to start the ImageViewActivity
 				Intent intent = new Intent(CreatePost.this,
 						CreateJobActivity.class);
+				
+				intent.putExtra("IconClickedPosition", position);
 				
 				// Add the ID of the thumbnail to display as an Intent Extra
 				intent.putExtra(EXTRA_RES_ID, (int) id);

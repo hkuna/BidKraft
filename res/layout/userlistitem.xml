@@ -32,7 +32,7 @@
         android:id="@+id/ib_category"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/bookseller"
+        android:src="@drawable/textbook"
         android:background="@null"
         android:layout_marginLeft="5dp"
         android:layout_weight="1"

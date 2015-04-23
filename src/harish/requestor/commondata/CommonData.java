@@ -287,28 +287,20 @@ public class CommonData {
 			Log.d(TAG, "inside switch " + Integer.parseInt(categoryid));
 
 			categoryidimage.setImageDrawable(context.getResources()
-					.getDrawable(R.drawable.rigid_baby));
+					.getDrawable(R.drawable.rigid_baby_icon));
 			break;
 		case 2:
 			categoryidimage.setImageDrawable(context.getResources()
-					.getDrawable(R.drawable.pet));
+					.getDrawable(R.drawable.pet_icon));
 			break;
 		case 3:
 			categoryidimage.setImageDrawable(context.getResources()
-					.getDrawable(R.drawable.tutor));
+					.getDrawable(R.drawable.tutor_icon));
 			break;
 		case 4:
 			categoryidimage.setImageDrawable(context.getResources()
-					.getDrawable(R.drawable.textbook));
+					.getDrawable(R.drawable.textbook_icon));
 			
-		case 5:
-			categoryidimage.setImageDrawable(context.getResources()
-					.getDrawable(R.drawable.tutor));
-			break;
-		case 6:
-			categoryidimage.setImageDrawable(context.getResources()
-					.getDrawable(R.drawable.textbook));
-			break;
 		}
 
 	}

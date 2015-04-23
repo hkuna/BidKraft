@@ -99,7 +99,7 @@ public class OpenBidsForVendor extends ListFragment {
 			});
 
 		} else {
-			noListMessage();
+		noListMessage();
 		}
 
 	}

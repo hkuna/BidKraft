@@ -272,13 +272,13 @@ if (role.equalsIgnoreCase("auction")) {
 			leastbids.setText("Lowest bid : " + o.getLeastBidAmount());
 			totalbids.setText("Toatal Bids :" + o.getTotalBids());*/
 			
-			tv_serviceSubject.setText(o.getDescription());
+			tv_serviceSubject.setText(o.getJobTitle());
 			tv_leastbidamount.setText("$"+o.getLeastBidAmount()+"/hr");
 
 			Log.d(tag, "category id value " + o.getCategoryId().toString());
 
-			/*CommonData.setCategoryImage(o.getCategoryId().toString(), vi,
-					context, categoryidimage);*/
+			CommonData.setCategoryImage(o.getCategoryId().toString(), vi,
+					context, categoryidimage);
 		}
 
 	}
@@ -294,7 +294,7 @@ if (role.equalsIgnoreCase("auction")) {
 					.findViewById(R.id.categoryid);
 			leastbids = (TextView) rootview.findViewById(R.id.tvleastbid);
 			totalbids = (TextView) rootview.findViewById(R.id.tvtotalbids);*/
-			
+			categoryidimage = (ImageView) rootview.findViewById(R.id.ib_category);
 			tv_serviceSubject = (TextView) rootview.findViewById(R.id.tv_servicedetails);
 			tv_leastbidamount =(TextView) rootview.findViewById(R.id.tv_bidamount);
 		}

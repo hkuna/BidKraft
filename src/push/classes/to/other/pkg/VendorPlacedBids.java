@@ -131,7 +131,7 @@ public class VendorPlacedBids extends ListFragment  {
 			});
 
 		} else {
-			noListMessage();
+		noListMessage();
 		}
 
 	}

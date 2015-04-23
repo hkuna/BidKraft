@@ -245,17 +245,22 @@ Response response =		 CommonData.convertGSonObjectToResponseClass(responseBody);
 	private void populateDataOnUi(Requestor_Json_Data_Structure temp) {
 
 		tv_username.setText(CommonData.getUserDetails().getUserName());
-		tv_date.setText(temp.getRequestStartDate());
+		tv_date.setText(temp.getCreatedDate());
 		tv_description.setText(temp.getDescription());
 		tv_lowestbid.setText("$"+temp.getLeastBidAmount()+"\n"+"Lowest Bid");
 		
 		try {
 			// date conversion
-			SimpleDateFormat formatter = new SimpleDateFormat("ddd, dd MMM yyyy HH:mm:ss zzz");
-			Date date;
-			date = formatter.parse(temp.getBidEndDateTime());
-			  int days =(Calendar.getInstance().DAY_OF_MONTH -date.getDay()) ;
-			  tv_timeleft.setText(days +"days Left");
+			SimpleDateFormat formatter = new SimpleDateFormat("EEE, dd MMM yyyy hh:mm:ss Z");
+			
+			Date current = new Date();
+			if(temp.getBidEndDateTime()!=null)
+			{
+			Date bidEndDate = formatter.parse(temp.getBidEndDateTime());
+			  long diff =(current.getTime() -bidEndDate.getTime()) ;
+			  tv_timeleft.setText("Time Left "+"\n"+diff/(1000*60*60*24) +"days ");
+			}
+			  
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -264,11 +269,11 @@ Response response =		 CommonData.convertGSonObjectToResponseClass(responseBody);
 		
 		
 		
-		if(whichFragment< 44)
+		if(whichFragment != CommonData.OpenBidsFragment)
 		{
 		  	handleUiElementsForUserView();
 		}
-		
+		 
 		drawListViewUnderScrollViewForDisplayingBidDetails(temp);
 		
 	}
@@ -287,19 +292,9 @@ Response response =		 CommonData.convertGSonObjectToResponseClass(responseBody);
 
 		llForBidderslist = new LinearLayout(this);
 		llForBidderslist.setOrientation(LinearLayout.VERTICAL);
-		llForBidderslist.setBackgroundColor(Color.rgb(236, 240, 241));
-
-		LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		rowvi = inflater.inflate(R.layout.detailsrow, null);
-		tv_biduser = (TextView) rowvi.findViewById(R.id.tv_biduser);
-		tv_bidtime = (TextView) rowvi.findViewById(R.id.tv_biddingtime);
-		tv_vendorbidamount = (TextView) rowvi.findViewById(R.id.tv_vendorbidvalue);
-		cb_accept_or_complete = (CheckBox) rowvi.findViewById(R.id.cb_accept);
-		cb_accept_or_complete.setOnClickListener(this);
-		
-		
+		llForBidderslist.setBackgroundColor(Color.rgb(236, 240, 241));		
 		if(temp.getBids().size()!=0)
-		addRowDataForListViewInEachFragment(rowvi, temp);
+		addRowDataForListViewInEachFragment(temp);
 
 	}
 
@@ -333,9 +328,20 @@ Response response =		 CommonData.convertGSonObjectToResponseClass(responseBody);
 		
 	}
 
-	private void addRowDataForListViewInEachFragment(View rowvi , Requestor_Json_Data_Structure temp) {
+	private void addRowDataForListViewInEachFragment( Requestor_Json_Data_Structure temp) {
+
 		for(int i=0 ; i< temp.getBids().size(); i++)
 		{
+			
+			LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			rowvi = inflater.inflate(R.layout.detailsrow, null);
+			tv_biduser = (TextView) rowvi.findViewById(R.id.tv_biduser);
+			tv_bidtime = (TextView) rowvi.findViewById(R.id.tv_biddingtime);
+			tv_vendorbidamount = (TextView) rowvi.findViewById(R.id.tv_vendorbidvalue);
+			cb_accept_or_complete = (CheckBox) rowvi.findViewById(R.id.cb_accept);
+			cb_accept_or_complete.setOnClickListener(this);
+			
+			//parent view
 			tv_biduser.setText(temp.getBids().get(i).getOffererName());
 			tv_vendorbidamount.setText(temp.getBids().get(i).getBidAmount()+"/hr");
 			
@@ -351,12 +357,7 @@ Response response =		 CommonData.convertGSonObjectToResponseClass(responseBody);
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	
-		  
-		    		
 			
-			
-		
 			cb_accept_or_complete.setTag(i);
 			cb_accept_or_complete.setOnClickListener(AuctionDetails.this);
 			if(whichFragment >=44)

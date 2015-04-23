@@ -216,7 +216,7 @@ public class Requestor_HomeActivity extends FragmentActivity implements
 			FragmentTransaction fragmentTransaction) {
 		// When the given tab is selected, switch to the corresponding page in
 		// the ViewPager.
-		//mViewPager.setAdapter(mAppSectionsPagerAdapter);
+		mViewPager.setAdapter(mAppSectionsPagerAdapter);
 		mViewPager.setCurrentItem(tab.getPosition());
 	
 //setTabNotificationCount(tab.getPosition());

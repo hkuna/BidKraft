@@ -146,7 +146,7 @@ public class Vendor_Main_Activity extends FragmentActivity implements
 	@Override
 	public void onTabReselected(Tab arg0, FragmentTransaction arg1) {
 		Log.d(Tag, "tab selected " + arg0.getPosition());
-		 mViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
+		// mViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
 	}
 
 	@Override

@@ -45,6 +45,7 @@ public class UserMainListAdapter extends BaseAdapter implements OnClickListener 
 	private static LayoutInflater inflater = null;
 
 	TextView biddername, bidderoffer, ratingcount;
+	ImageView categoryImage;
 	//ImageView categoryidimage;
 
 	String tag = "User_Vendor_ListAdapter";
@@ -249,15 +250,18 @@ int id;
 
 		} else {
 			Requestor_Json_Data_Structure o = requests.get(position);
-			tv_serviceSubject.setText(o.getDescription());
+			tv_serviceSubject.setText(o.getJobTitle());
 			tv_leastbidamount.setText("$"+o.getLeastBidAmount()+"/hr");
 			/*date.setText(o.getRequestStartDate().subSequence(6, 16));
 			time.setText(o.getCreatedDate().subSequence(17, 22));
 			leastbids.setText("Lowest bid : " + o.getLeastBidAmount());
 			totalbids.setText("Total Bids :" + o.getTotalBids());*/
-			/*CommonData.setCategoryImage(o.getCategoryId().toString(), vi,
-					mcontext, categoryidimage);
-*/
+			CommonData.setCategoryImage(o.getCategoryId().toString(), vi,
+					mcontext, categoryImage);
+					
+
+			
+			
 		}
 	}
 
@@ -272,6 +276,8 @@ int id;
 			totalbids = (TextView) rootview.findViewById(R.id.tvtotalbids);*/
 			tv_serviceSubject = (TextView) rootview.findViewById(R.id.tv_servicedetails);
 			tv_leastbidamount =(TextView) rootview.findViewById(R.id.tv_bidamount);
+			categoryImage = (ImageView) rootview.findViewById(R.id.ib_category);
+			
 			
 		}
 

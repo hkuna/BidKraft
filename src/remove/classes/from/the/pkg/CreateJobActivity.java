@@ -243,9 +243,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -262,12 +260,15 @@ public class CreateJobActivity extends Activity implements OnClickListener {
     private EditText etTitle;
     private EditText etDescription;
     private FlowLayout tagsLayout;
-    private ServerConnector mServerConnector;
+    private ServerConnector mServerConnector; 
     private int mHour, mMinute;
     private ArrayList<String> tags;
     int tagCounter;
-    private String requestedDate, endDate , biddingEndTime ="abc"; 
+    Bundle extras ;
+    private String requestedDate, endDate , biddingEndTime="" ;
+    Calendar cal;
     String TAG ="CreateJobActivity";
+    int whatCategoryIconClicked;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -282,13 +283,21 @@ public class CreateJobActivity extends Activity implements OnClickListener {
         tagsLayout = (FlowLayout) findViewById(R.id.tagsLayout);
         tvRequestDate.setOnClickListener(this);
         tvEndDate.setOnClickListener(this);
+        tvBiddingEnds.setOnClickListener(this);
         tags = new ArrayList<String>();
+        extras = getIntent().getExtras();
+        
+        if (extras != null) {
+        	whatCategoryIconClicked = (int) extras.getInt("IconClickedPosition");
+		
+			
+		}
         
 
         //Instantiate tags section
         setUpTags();
 
-        tvBiddingEnds.setOnClickListener(new OnClickListener() {
+       /* tvBiddingEnds.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Creating the instance of PopupMenu
@@ -308,7 +317,7 @@ public class CreateJobActivity extends Activity implements OnClickListener {
                 popup.show(); //showing popup menu
             }
         }); //closing the setOnClickListener method
-    }
+*/    }
 
 
     @Override
@@ -363,11 +372,15 @@ public class CreateJobActivity extends Activity implements OnClickListener {
                 switch(updatedTextView.getId())
                 {
                 	case R.id.tvBiddingEnds:
-                		biddingEndTime = "abc";
+                		if(calendar!=null)
+                			biddingEndTime = calendar.getTime().toString();
+                            
                 		break;
                 		
                 	case R.id.tvRequestDate:
                 		requestedDate = calendar.getTime().toString();
+                		cal = calendar;
+                		 cal.add(Calendar.HOUR, 2);
                 		break;
                 	case R.id.tvEndDate :
                 		endDate = calendar.getTime().toString();
@@ -389,7 +402,7 @@ public class CreateJobActivity extends Activity implements OnClickListener {
         addBtn.setHeight(10);
         addBtn.setBackground(getResources().getDrawable(R.drawable.round_corners));
         //addBtn.setBackgroundColor(Color.parseColor("#F39C12"));
-        addBtn.setPadding(4,1,4,1);
+        addBtn.setPadding(4,1,4,1); 
 
         final Context finalContext = this;
 
@@ -474,9 +487,6 @@ public class CreateJobActivity extends Activity implements OnClickListener {
 				
 				if(validateForm())
 				   notifyCreatePostToserver();
-			
-				
-				
 			}
 
 			
@@ -490,9 +500,11 @@ public class CreateJobActivity extends Activity implements OnClickListener {
 	}
 
     private void notifyCreatePostToserver() {
+    	 
+    	if(biddingEndTime!=null || biddingEndTime.equals(""))
+    		biddingEndTime = cal.getTime().toString();
     	
-    	
-    	mServerConnector.createService(etTitle.getText().toString(), 5, etDescription.getText().toString(), requestedDate, endDate,  endDate,tags.toArray(), new AsyncHttpResponseHandler() {
+    	mServerConnector.createService(etTitle.getText().toString(), whatCategoryIconClicked+1, etDescription.getText().toString(), requestedDate, endDate,  biddingEndTime,tags.toArray(), new AsyncHttpResponseHandler() {
 			
 			@Override
 			public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -537,8 +549,8 @@ public class CreateJobActivity extends Activity implements OnClickListener {
 		if(!(endDate.equals("") || endDate==null))
 			form_valid = true;
 		
-		if(!(biddingEndTime.equals("") || biddingEndTime==null))
-			form_valid = true;
+		/*if(!(biddingEndTime.equals("") || biddingEndTime==null))
+			form_valid = true;*/
 		
 		if(tags.size()!= 0 && tags!=null )
 			form_valid=true;
@@ -563,6 +575,10 @@ public class CreateJobActivity extends Activity implements OnClickListener {
 		case R.id.tvEndDate:
 			setAndChangeDateTimeTextView(tvEndDate);
 			break;
+			
+		case R.id.tvBiddingEnds:
+			setAndChangeDateTimeTextView(tvBiddingEnds);
+			
 
 		}
 		 
